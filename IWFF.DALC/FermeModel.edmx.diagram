@@ -4,35 +4,35 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6842142b545448eb874d385c8f912c39" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="Model.BOLETA" Width="1.5" PointX="9.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.CARGO" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.CLIENTE" Width="2" PointX="2.5" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.COMUNA" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.COTIZACION" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DESPACHO" Width="1.5" PointX="12" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.EMPLEADO" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.FACTURA" Width="1.5" PointX="9.75" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.FAMILIA" Width="1.5" PointX="10.5" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ORDEN_COMPRA" Width="1.5" PointX="7.5" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ORDEN_DESPACHO" Width="1.5" PointX="5.25" PointY="17.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PERSONA" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PRODUCTO" Width="2.75" PointX="12.75" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PROVEEDOR" Width="1.5" PointX="10.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.BOLETA_JN" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+      <Diagram DiagramId="6842142b545448eb874d385c8f912c39" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="Model.BOLETA" Width="1.5" PointX="7.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CARGO" Width="1.5" PointX="5.625" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CLIENTE" Width="2" PointX="2.875" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.COMUNA" Width="1.5" PointX="1.125" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.COTIZACION" Width="1.5" PointX="5.625" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DESPACHO" Width="1.5" PointX="12.375" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.EMPLEADO" Width="1.5" PointX="3.375" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FACTURA" Width="1.5" PointX="10.125" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FAMILIA" Width="1.5" PointX="10.625" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ORDEN_COMPRA" Width="1.5" PointX="7.875" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ORDEN_DESPACHO" Width="1.5" PointX="5.625" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PERSONA" Width="1.5" PointX="1.125" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PRODUCTO" Width="2.75" PointX="13.125" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PROVEEDOR" Width="1.5" PointX="17.625" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.BOLETA_JN" Width="1.5" PointX="1.125" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.CARGO_JN" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.CLIENTE_JN" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.COMUNA_JN" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.COTIZACION_JN" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.COTIZACION_JN" Width="1.5" PointX="11" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.DESPACHO_JN" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.EMPLEADO_JN" Width="1.5" PointX="16" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.FACTURA_JN" Width="1.5" PointX="7.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.FAMILIA_JN" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ORDEN_COMPRA_JN" Width="1.5" PointX="14.75" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ORDEN_DESPACHO_JN" Width="1.5" PointX="14.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.EMPLEADO_JN" Width="1.5" PointX="4.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FACTURA_JN" Width="1.5" PointX="8.125" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FAMILIA_JN" Width="1.5" PointX="8.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ORDEN_COMPRA_JN" Width="1.5" PointX="12.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ORDEN_DESPACHO_JN" Width="1.5" PointX="7.375" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.PERSONA_JN" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PRODUCTO_JN" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.PROVEEDOR_JN" Width="1.5" PointX="16.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PRODUCTO_JN" Width="1.5" PointX="18.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PROVEEDOR_JN" Width="1.5" PointX="2.75" PointY="4.125" IsExpanded="true" />
         <AssociationConnector Association="Model.BOLETA_ORDEN_COMPRA_FK" ManuallyRouted="false" />
         <AssociationConnector Association="Model.DESPACHO_BOLETA_FK" ManuallyRouted="false" />
         <AssociationConnector Association="Model.CARGO_EMPLEADO_FK" ManuallyRouted="false" />
