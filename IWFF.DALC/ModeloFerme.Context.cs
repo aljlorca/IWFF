@@ -13,10 +13,10 @@ namespace IWFF.DALC
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FermEntities : DbContext
+    public partial class FermeEntities : DbContext
     {
-        public FermEntities()
-            : base("name=FermEntities")
+        public FermeEntities()
+            : base("name=FermeEntities")
         {
         }
     
@@ -31,27 +31,14 @@ namespace IWFF.DALC
         public DbSet<COMUNA> COMUNA { get; set; }
         public DbSet<COTIZACION> COTIZACION { get; set; }
         public DbSet<DESPACHO> DESPACHO { get; set; }
+        public DbSet<DIRECCIONES> DIRECCIONES { get; set; }
         public DbSet<EMPLEADO> EMPLEADO { get; set; }
         public DbSet<FACTURA> FACTURA { get; set; }
-        public DbSet<FAMILIA> FAMILIA { get; set; }
         public DbSet<ORDEN_COMPRA> ORDEN_COMPRA { get; set; }
-        public DbSet<ORDEN_DESPACHO> ORDEN_DESPACHO { get; set; }
+        public DbSet<ORDENDESPACHO> ORDENDESPACHO { get; set; }
         public DbSet<PERSONA> PERSONA { get; set; }
         public DbSet<PRODUCTO> PRODUCTO { get; set; }
         public DbSet<PROVEEDOR> PROVEEDOR { get; set; }
-        public DbSet<BOLETA_JN> BOLETA_JN { get; set; }
-        public DbSet<CARGO_JN> CARGO_JN { get; set; }
-        public DbSet<CLIENTE_JN> CLIENTE_JN { get; set; }
-        public DbSet<COMUNA_JN> COMUNA_JN { get; set; }
-        public DbSet<COTIZACION_JN> COTIZACION_JN { get; set; }
-        public DbSet<DESPACHO_JN> DESPACHO_JN { get; set; }
-        public DbSet<EMPLEADO_JN> EMPLEADO_JN { get; set; }
-        public DbSet<FACTURA_JN> FACTURA_JN { get; set; }
-        public DbSet<FAMILIA_JN> FAMILIA_JN { get; set; }
-        public DbSet<ORDEN_COMPRA_JN> ORDEN_COMPRA_JN { get; set; }
-        public DbSet<ORDEN_DESPACHO_JN> ORDEN_DESPACHO_JN { get; set; }
-        public DbSet<PERSONA_JN> PERSONA_JN { get; set; }
-        public DbSet<PRODUCTO_JN> PRODUCTO_JN { get; set; }
-        public DbSet<PROVEEDOR_JN> PROVEEDOR_JN { get; set; }
+        public DbSet<REGION> REGION { get; set; }
     }
 }

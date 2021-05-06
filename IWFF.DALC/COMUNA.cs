@@ -16,12 +16,14 @@ namespace IWFF.DALC
     {
         public COMUNA()
         {
-            this.CLIENTE = new HashSet<CLIENTE>();
+            this.DIRECCIONES = new HashSet<DIRECCIONES>();
         }
     
-        public string ID_COMUNA { get; set; }
-        public string NOM_COMUNA { get; set; }
+        public decimal ID_COMUNA { get; set; }
+        public string NOMBRE_COMUNA { get; set; }
+        public decimal REGION_ID_REGION { get; set; }
     
-        public virtual ICollection<CLIENTE> CLIENTE { get; set; }
+        public virtual REGION REGION { get; set; }
+        public virtual ICollection<DIRECCIONES> DIRECCIONES { get; set; }
     }
 }

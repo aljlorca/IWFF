@@ -9,12 +9,12 @@ namespace IWFF.negocio
 {
     public class Cargo
     {
-        public String id_cargo { get; set; }
+        public decimal id_cargo { get; set; }
         public String nombre_cargo { get; set; }
         public String descripcion_cargo { get; set; }
 
         //DAO
-        FermEntities db = new FermEntities();
+        FermeEntities db = new FermeEntities();
 
         //Listado
         public List<Cargo> ReadAll()
@@ -22,7 +22,7 @@ namespace IWFF.negocio
             return this.db.CARGO.Select(c => new Cargo()
             {
                 id_cargo = c.ID_CARGO,
-                nombre_cargo = c.NOM_CARGO,
+                nombre_cargo = c.NOMBRE_CARGO,
                 descripcion_cargo = c.DESCRIPCION_CARGO
             }
             ).ToList();

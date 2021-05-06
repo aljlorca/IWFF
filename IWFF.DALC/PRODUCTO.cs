@@ -14,22 +14,25 @@ namespace IWFF.DALC
     
     public partial class PRODUCTO
     {
-        public decimal ID_PRODUCTO { get; set; }
-        public Nullable<decimal> ID_FAMILIA { get; set; }
-        public Nullable<decimal> ID_PROVEEDOR { get; set; }
-        public string NOM_PRODUCTO { get; set; }
-        public string DESCRIPCION { get; set; }
-        public Nullable<decimal> PRECIO_VENTA { get; set; }
-        public Nullable<decimal> PRECIO_COMPRA { get; set; }
-        public Nullable<System.DateTime> FECHA_VENC { get; set; }
-        public Nullable<decimal> STOCK { get; set; }
-        public Nullable<decimal> STOCK_CRITICO { get; set; }
-        public decimal PROVEEDOR_ID_NOM_PROVEEDOR { get; set; }
-        public decimal FAMILIA_ID_FAMILIA { get; set; }
-        public decimal ORDEN_COMPRA_ID_ORDEN_COMPRA { get; set; }
+        public PRODUCTO()
+        {
+            this.BOLETA = new HashSet<BOLETA>();
+            this.COTIZACION = new HashSet<COTIZACION>();
+            this.FACTURA = new HashSet<FACTURA>();
+        }
     
-        public virtual FAMILIA FAMILIA { get; set; }
-        public virtual ORDEN_COMPRA ORDEN_COMPRA { get; set; }
+        public decimal ID_PRODUCTO { get; set; }
+        public string NOMBRE_PRODUCTO { get; set; }
+        public string DESCRIPCION_PRODUCTO { get; set; }
+        public decimal PRECIO_PRODUCTO { get; set; }
+        public Nullable<System.DateTime> FECHA_VENCIMIENTO { get; set; }
+        public decimal STOCK_PRODUCTO { get; set; }
+        public Nullable<decimal> STOCK_CRITICO_PRODUCTO { get; set; }
+        public decimal PROVEEDOR_ID_PROVEEDOR { get; set; }
+    
         public virtual PROVEEDOR PROVEEDOR { get; set; }
+        public virtual ICollection<BOLETA> BOLETA { get; set; }
+        public virtual ICollection<COTIZACION> COTIZACION { get; set; }
+        public virtual ICollection<FACTURA> FACTURA { get; set; }
     }
 }

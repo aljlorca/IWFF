@@ -12,15 +12,16 @@ namespace IWFF.DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class COMUNA_JN
+    public partial class REGION
     {
-        public string JN_OPERATION { get; set; }
-        public string JN_ORACLE_USER { get; set; }
-        public System.DateTime JN_DATETIME { get; set; }
-        public string JN_NOTES { get; set; }
-        public string JN_APPLN { get; set; }
-        public Nullable<decimal> JN_SESSION { get; set; }
-        public string ID_COMUNA { get; set; }
-        public string NOM_COMUNA { get; set; }
+        public REGION()
+        {
+            this.COMUNA = new HashSet<COMUNA>();
+        }
+    
+        public decimal ID_REGION { get; set; }
+        public string NOMBRE_REGION { get; set; }
+    
+        public virtual ICollection<COMUNA> COMUNA { get; set; }
     }
 }

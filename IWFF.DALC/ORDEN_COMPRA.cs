@@ -14,22 +14,16 @@ namespace IWFF.DALC
     
     public partial class ORDEN_COMPRA
     {
-        public ORDEN_COMPRA()
-        {
-            this.BOLETA = new HashSet<BOLETA>();
-            this.FACTURA = new HashSet<FACTURA>();
-            this.PRODUCTO = new HashSet<PRODUCTO>();
-        }
-    
         public decimal ID_ORDEN_COMPRA { get; set; }
-        public Nullable<decimal> ID_COTIZACION { get; set; }
-        public Nullable<decimal> ID_PRODUCTO { get; set; }
         public string ESTADO { get; set; }
-        public decimal COTIZACION_ID_COTIZACION { get; set; }
+        public decimal COTIZACION_ID { get; set; }
+        public decimal COTIZACION_PROVEEDOR_ID { get; set; }
+        public decimal BOLETA_ID_BOLETA { get; set; }
+        public decimal FACTURA_ID_FACTURA { get; set; }
+        public decimal COTIZACION_CLIENTE_RUT_PERSONA { get; set; }
     
-        public virtual ICollection<BOLETA> BOLETA { get; set; }
+        public virtual BOLETA BOLETA { get; set; }
         public virtual COTIZACION COTIZACION { get; set; }
-        public virtual ICollection<FACTURA> FACTURA { get; set; }
-        public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
+        public virtual FACTURA FACTURA { get; set; }
     }
 }

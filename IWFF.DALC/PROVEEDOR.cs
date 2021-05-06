@@ -16,15 +16,16 @@ namespace IWFF.DALC
     {
         public PROVEEDOR()
         {
+            this.COTIZACION = new HashSet<COTIZACION>();
             this.PRODUCTO = new HashSet<PRODUCTO>();
         }
     
-        public decimal ID_NOM_PROVEEDOR { get; set; }
-        public string NOM_PROVEEDOR { get; set; }
-        public string RUBRO { get; set; }
-        public string DIRECCION { get; set; }
-        public Nullable<decimal> TELEFONO { get; set; }
+        public decimal ID_PROVEEDOR { get; set; }
+        public string NOMBRE_PROVEEDOR { get; set; }
+        public decimal TELEFONO_PROVEEDOR { get; set; }
+        public string RUBRO_PROVEEDOR { get; set; }
     
+        public virtual ICollection<COTIZACION> COTIZACION { get; set; }
         public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
     }
 }
