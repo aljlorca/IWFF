@@ -13,9 +13,10 @@ namespace IWFF.negocio
         public String nombre_familia { get; set; }
 
         //Conexion a BD por DAO
-        FermEntities db = new FermEntities();
+        FermeEntities db = new FermeEntities();
 
         //Listado de Familias
+        /*
         public List<Familia> ReadAll()
         {
             return this.db.FAMILIA.Select(f => new Familia(){
@@ -24,5 +25,6 @@ namespace IWFF.negocio
             }
             ).ToList();
         }
+        */
     }
 }
