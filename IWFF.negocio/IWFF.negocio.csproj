@@ -52,9 +52,14 @@
     <Compile Include="Cargo.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Comuna.cs" />
+    <Compile Include="Cotizacion.cs" />
+    <Compile Include="Despacho.cs" />
     <Compile Include="Direccion.cs" />
     <Compile Include="Empleado.cs" />
+    <Compile Include="Factura.cs" />
     <Compile Include="Familia.cs" />
+    <Compile Include="OrdenCompra.cs" />
+    <Compile Include="Ordendespacho.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Producto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
