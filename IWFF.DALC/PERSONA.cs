@@ -16,18 +16,17 @@ namespace IWFF.DALC
     {
         public PERSONA()
         {
-            this.CLIENTE = new HashSet<CLIENTE>();
-            this.EMPLEADO = new HashSet<EMPLEADO>();
+            this.DIRECCIONES = new HashSet<DIRECCIONES>();
         }
     
-        public string RUT { get; set; }
-        public string NOMBRE { get; set; }
-        public string CORREO { get; set; }
-        public Nullable<int> TELEFONO { get; set; }
-        public string DIRECCION { get; set; }
-        public string ID_COMUNA { get; set; }
+        public decimal RUT_PERSONA { get; set; }
+        public string NOMBRE_PERSONA { get; set; }
+        public string CORREO_PERSONA { get; set; }
+        public decimal TELEFONO_PERSONA { get; set; }
+        public string CONTRASENA_PERSONA { get; set; }
     
-        public virtual ICollection<CLIENTE> CLIENTE { get; set; }
-        public virtual ICollection<EMPLEADO> EMPLEADO { get; set; }
+        public virtual CLIENTE CLIENTE { get; set; }
+        public virtual ICollection<DIRECCIONES> DIRECCIONES { get; set; }
+        public virtual EMPLEADO EMPLEADO { get; set; }
     }
 }

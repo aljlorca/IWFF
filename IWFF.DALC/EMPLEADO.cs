@@ -14,21 +14,11 @@ namespace IWFF.DALC
     
     public partial class EMPLEADO
     {
-        public EMPLEADO()
-        {
-            this.CARGO = new HashSet<CARGO>();
-            this.COTIZACION = new HashSet<COTIZACION>();
-        }
-    
+        public decimal RUT_PERSONA { get; set; }
+        public decimal CARGO_ID_CARGO { get; set; }
         public decimal ID_EMPLEADO { get; set; }
-        public Nullable<decimal> RUT { get; set; }
-        public Nullable<decimal> ID_CARGO { get; set; }
-        public string NOMBRE { get; set; }
-        public string APELLIDO { get; set; }
-        public string PERSONA_RUT { get; set; }
     
-        public virtual ICollection<CARGO> CARGO { get; set; }
-        public virtual ICollection<COTIZACION> COTIZACION { get; set; }
+        public virtual CARGO CARGO { get; set; }
         public virtual PERSONA PERSONA { get; set; }
     }
 }

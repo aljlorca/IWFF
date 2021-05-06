@@ -14,12 +14,15 @@ namespace IWFF.DALC
     
     public partial class CARGO
     {
-        public string ID_CARGO { get; set; }
-        public string NOM_CARGO { get; set; }
-        public string DESCRIPCION_CARGO { get; set; }
-        public decimal EMPLEADO_ID_EMPLEADO { get; set; }
-        public string EMPLEADO_RUT1 { get; set; }
+        public CARGO()
+        {
+            this.EMPLEADO = new HashSet<EMPLEADO>();
+        }
     
-        public virtual EMPLEADO EMPLEADO { get; set; }
+        public decimal ID_CARGO { get; set; }
+        public string NOMBRE_CARGO { get; set; }
+        public string DESCRIPCION_CARGO { get; set; }
+    
+        public virtual ICollection<EMPLEADO> EMPLEADO { get; set; }
     }
 }

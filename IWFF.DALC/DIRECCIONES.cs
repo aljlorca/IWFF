@@ -12,18 +12,15 @@ namespace IWFF.DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class PROVEEDOR_JN
+    public partial class DIRECCIONES
     {
-        public string JN_OPERATION { get; set; }
-        public string JN_ORACLE_USER { get; set; }
-        public System.DateTime JN_DATETIME { get; set; }
-        public string JN_NOTES { get; set; }
-        public string JN_APPLN { get; set; }
-        public Nullable<decimal> JN_SESSION { get; set; }
-        public decimal ID_NOM_PROVEEDOR { get; set; }
-        public string NOM_PROVEEDOR { get; set; }
-        public string RUBRO { get; set; }
+        public decimal PERSONA_RUT_PERSONA { get; set; }
+        public decimal COMUNA_ID_COMUNA { get; set; }
+        public decimal COMUNA_ID_REGION { get; set; }
+        public decimal ID_DIRECCION { get; set; }
         public string DIRECCION { get; set; }
-        public Nullable<decimal> TELEFONO { get; set; }
+    
+        public virtual COMUNA COMUNA { get; set; }
+        public virtual PERSONA PERSONA { get; set; }
     }
 }

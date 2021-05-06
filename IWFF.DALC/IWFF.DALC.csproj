@@ -49,133 +49,92 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BOLETA.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BOLETA_JN.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
+      <DependentUpon>ModeloFerme.tt</DependentUpon>
     </Compile>
     <Compile Include="CARGO.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CARGO_JN.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
+      <DependentUpon>ModeloFerme.tt</DependentUpon>
     </Compile>
     <Compile Include="CLIENTE.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CLIENTE_JN.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
+      <DependentUpon>ModeloFerme.tt</DependentUpon>
     </Compile>
     <Compile Include="COMUNA.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="COMUNA_JN.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
+      <DependentUpon>ModeloFerme.tt</DependentUpon>
     </Compile>
     <Compile Include="COTIZACION.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="COTIZACION_JN.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
+      <DependentUpon>ModeloFerme.tt</DependentUpon>
     </Compile>
     <Compile Include="DESPACHO.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
+      <DependentUpon>ModeloFerme.tt</DependentUpon>
     </Compile>
-    <Compile Include="DESPACHO_JN.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
+    <Compile Include="DIRECCIONES.cs">
+      <DependentUpon>ModeloFerme.tt</DependentUpon>
     </Compile>
     <Compile Include="EMPLEADO.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EMPLEADO_JN.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
+      <DependentUpon>ModeloFerme.tt</DependentUpon>
     </Compile>
     <Compile Include="FACTURA.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
+      <DependentUpon>ModeloFerme.tt</DependentUpon>
     </Compile>
-    <Compile Include="FACTURA_JN.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FAMILIA.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FAMILIA_JN.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FermeModel.Context.cs">
+    <Compile Include="ModeloFerme.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FermeModel.Context.tt</DependentUpon>
+      <DependentUpon>ModeloFerme.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="FermeModel.cs">
+    <Compile Include="ModeloFerme.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FermeModel.tt</DependentUpon>
+      <DependentUpon>ModeloFerme.tt</DependentUpon>
     </Compile>
-    <Compile Include="FermeModel.Designer.cs">
+    <Compile Include="ModeloFerme.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FermeModel.edmx</DependentUpon>
+      <DependentUpon>ModeloFerme.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ORDENDESPACHO.cs">
+      <DependentUpon>ModeloFerme.tt</DependentUpon>
     </Compile>
     <Compile Include="ORDEN_COMPRA.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ORDEN_COMPRA_JN.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ORDEN_DESPACHO.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ORDEN_DESPACHO_JN.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
+      <DependentUpon>ModeloFerme.tt</DependentUpon>
     </Compile>
     <Compile Include="PERSONA.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PERSONA_JN.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
+      <DependentUpon>ModeloFerme.tt</DependentUpon>
     </Compile>
     <Compile Include="PRODUCTO.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PRODUCTO_JN.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
+      <DependentUpon>ModeloFerme.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PROVEEDOR.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
+      <DependentUpon>ModeloFerme.tt</DependentUpon>
     </Compile>
-    <Compile Include="PROVEEDOR_JN.cs">
-      <DependentUpon>FermeModel.tt</DependentUpon>
+    <Compile Include="REGION.cs">
+      <DependentUpon>ModeloFerme.tt</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="FermeModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FermeModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="FermeModel.edmx.diagram">
-      <DependentUpon>FermeModel.edmx</DependentUpon>
+    <EntityDeploy Include="ModeloFerme.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModeloFerme.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModeloFerme.edmx.diagram">
+      <DependentUpon>ModeloFerme.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FermeModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>FermeModel.Context.cs</LastGenOutput>
-      <DependentUpon>FermeModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="FermeModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FermeModel.edmx</DependentUpon>
-      <LastGenOutput>FermeModel.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="ModeloFerme.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModeloFerme.edmx</DependentUpon>
+      <LastGenOutput>ModeloFerme.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModeloFerme.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModeloFerme.edmx</DependentUpon>
+      <LastGenOutput>ModeloFerme.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

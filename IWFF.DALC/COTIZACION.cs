@@ -17,23 +17,20 @@ namespace IWFF.DALC
         public COTIZACION()
         {
             this.ORDEN_COMPRA = new HashSet<ORDEN_COMPRA>();
+            this.PRODUCTO = new HashSet<PRODUCTO>();
         }
     
         public decimal ID_COTIZACION { get; set; }
-        public Nullable<decimal> ID_EMPLEADO { get; set; }
-        public Nullable<decimal> ID_PROVEEDOR { get; set; }
-        public Nullable<decimal> ID_PRODUCTO { get; set; }
-        public Nullable<decimal> CANTIDAD { get; set; }
-        public Nullable<System.DateTime> FECHA_PEDIDO { get; set; }
-        public Nullable<decimal> MONTO_TOTAL { get; set; }
-        public decimal EMPLEADO_ID_EMPLEADO { get; set; }
-        public string EMPLEADO_RUT1 { get; set; }
-        public decimal CLIENTE_ID_CLIENTE { get; set; }
-        public string CLIENTE_RUT { get; set; }
-        public string CLIENTE_COMUNA_ID_COMUNA { get; set; }
+        public System.DateTime FECHA_COTIZACION { get; set; }
+        public decimal TOTAL_COTIZACION { get; set; }
+        public decimal EMPLEADO_CARGO_ID { get; set; }
+        public decimal PROVEEDOR_ID { get; set; }
+        public decimal CLIENTE_RUT { get; set; }
+        public decimal EMPLEADO_ID { get; set; }
     
         public virtual CLIENTE CLIENTE { get; set; }
-        public virtual EMPLEADO EMPLEADO { get; set; }
+        public virtual PROVEEDOR PROVEEDOR { get; set; }
         public virtual ICollection<ORDEN_COMPRA> ORDEN_COMPRA { get; set; }
+        public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
     }
 }

@@ -17,18 +17,17 @@ namespace IWFF.DALC
         public BOLETA()
         {
             this.DESPACHO = new HashSet<DESPACHO>();
+            this.ORDEN_COMPRA = new HashSet<ORDEN_COMPRA>();
+            this.PRODUCTO = new HashSet<PRODUCTO>();
         }
     
         public decimal ID_BOLETA { get; set; }
-        public decimal ORDEN_COMPRA_ID_ORDEN_COMPRA { get; set; }
-        public Nullable<decimal> ID_CLIENTE { get; set; }
-        public Nullable<decimal> ID_PRODUCO { get; set; }
-        public string NOMBRE_PRODUCTO { get; set; }
-        public Nullable<decimal> CANTIDAD { get; set; }
-        public Nullable<decimal> VALOR { get; set; }
-        public Nullable<decimal> MONTO_TOTAL { get; set; }
+        public decimal CANTIDAD_PROD_BOLETA { get; set; }
+        public decimal TOTAL_BOLETA { get; set; }
+        public System.DateTime FECHA_BOLETA { get; set; }
     
-        public virtual ORDEN_COMPRA ORDEN_COMPRA { get; set; }
         public virtual ICollection<DESPACHO> DESPACHO { get; set; }
+        public virtual ICollection<ORDEN_COMPRA> ORDEN_COMPRA { get; set; }
+        public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
     }
 }

@@ -17,19 +17,11 @@ namespace IWFF.DALC
         public CLIENTE()
         {
             this.COTIZACION = new HashSet<COTIZACION>();
-            this.ORDEN_DESPACHO = new HashSet<ORDEN_DESPACHO>();
         }
     
-        public decimal ID_CLIENTE { get; set; }
-        public string CORREO { get; set; }
-        public string CONTRASEÑA { get; set; }
-        public string ID_PERSONA { get; set; }
-        public string PERSONA_RUT { get; set; }
-        public string COMUNA_ID_COMUNA { get; set; }
+        public decimal RUT_PERSONA { get; set; }
     
-        public virtual COMUNA COMUNA { get; set; }
         public virtual PERSONA PERSONA { get; set; }
         public virtual ICollection<COTIZACION> COTIZACION { get; set; }
-        public virtual ICollection<ORDEN_DESPACHO> ORDEN_DESPACHO { get; set; }
     }
 }

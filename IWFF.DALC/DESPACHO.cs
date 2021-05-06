@@ -14,18 +14,19 @@ namespace IWFF.DALC
     
     public partial class DESPACHO
     {
+        public DESPACHO()
+        {
+            this.ORDENDESPACHO = new HashSet<ORDENDESPACHO>();
+        }
+    
         public decimal ID_DESPACHO { get; set; }
-        public Nullable<decimal> ID_ORDEN_COMPRA1 { get; set; }
-        public string ID_CLIENTE { get; set; }
-        public decimal ORDEN_DESPACHO_ID_ORDEN_COMPRA { get; set; }
-        public decimal ORDEN_DESPACHO_ID_CLIENTE { get; set; }
-        public string ORDEN_DESPACHO_RUT { get; set; }
-        public string ORDEN_DESPACHO_ID_COMUNA { get; set; }
-        public decimal BOLETA_ID_BOLETA { get; set; }
+        public System.DateTime FECHA_DESPACHO { get; set; }
+        public string ESTADO_DESPACHO { get; set; }
         public decimal FACTURA_ID_FACTURA { get; set; }
+        public decimal BOLETA_ID_BOLETA { get; set; }
     
         public virtual BOLETA BOLETA { get; set; }
         public virtual FACTURA FACTURA { get; set; }
-        public virtual ORDEN_DESPACHO ORDEN_DESPACHO { get; set; }
+        public virtual ICollection<ORDENDESPACHO> ORDENDESPACHO { get; set; }
     }
 }

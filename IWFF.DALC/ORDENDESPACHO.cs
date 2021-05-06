@@ -12,19 +12,12 @@ namespace IWFF.DALC
     using System;
     using System.Collections.Generic;
     
-    public partial class ORDEN_DESPACHO
+    public partial class ORDENDESPACHO
     {
-        public ORDEN_DESPACHO()
-        {
-            this.DESPACHO = new HashSet<DESPACHO>();
-        }
+        public decimal ID_ORDEN_DESPACHO { get; set; }
+        public System.DateTime FECHA_ORDEN_DESPACHO { get; set; }
+        public decimal DESPACHO_ID_DESPACHO { get; set; }
     
-        public decimal ID_ORDEN_COMPRA { get; set; }
-        public decimal CLIENTE_ID_CLIENTE { get; set; }
-        public string CLIENTE_RUT { get; set; }
-        public string CLIENTE_COMUNA_ID_COMUNA { get; set; }
-    
-        public virtual CLIENTE CLIENTE { get; set; }
-        public virtual ICollection<DESPACHO> DESPACHO { get; set; }
+        public virtual DESPACHO DESPACHO { get; set; }
     }
 }
