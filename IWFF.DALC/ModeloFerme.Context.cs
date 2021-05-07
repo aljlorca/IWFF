@@ -40,5 +40,6 @@ namespace IWFF.DALC
         public DbSet<PRODUCTO> PRODUCTO { get; set; }
         public DbSet<PROVEEDOR> PROVEEDOR { get; set; }
         public DbSet<REGION> REGION { get; set; }
+        public DbSet<FAMILIA> Familia { get; set; }
     }
 }

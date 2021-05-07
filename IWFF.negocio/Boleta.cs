@@ -12,7 +12,7 @@ namespace IWFF.negocio
         public decimal id_boleta { get; set; }
         public decimal cant_prod_boleta { get; set; }
         public decimal total_boleta { get; set; }
-        public DateTime fecha_boleta { get; set; }  
+        public DateTime fecha_boleta { get; set; }
 
         //DAO
         FermeEntities db = new FermeEntities();

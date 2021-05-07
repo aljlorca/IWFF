@@ -29,10 +29,12 @@ namespace IWFF.DALC
         public decimal STOCK_PRODUCTO { get; set; }
         public Nullable<decimal> STOCK_CRITICO_PRODUCTO { get; set; }
         public decimal PROVEEDOR_ID_PROVEEDOR { get; set; }
+        public decimal ID_FAMILIA { get; set; }
     
         public virtual PROVEEDOR PROVEEDOR { get; set; }
         public virtual ICollection<BOLETA> BOLETA { get; set; }
         public virtual ICollection<COTIZACION> COTIZACION { get; set; }
         public virtual ICollection<FACTURA> FACTURA { get; set; }
+        public virtual FAMILIA FAMILIA { get; set; }
     }
 }

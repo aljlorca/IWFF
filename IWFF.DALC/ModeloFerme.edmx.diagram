@@ -38,6 +38,8 @@
         <AssociationConnector Association="ModeloBD.BOLETAFACTURA" ManuallyRouted="false" />
         <AssociationConnector Association="ModeloBD.COTPROD" ManuallyRouted="false" />
         <AssociationConnector Association="ModeloBD.FACTURAPRODUCTO" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ModeloBD.FAMILIA" Width="1.5" PointX="22" PointY="13.125" />
+        <AssociationConnector Association="ModeloBD.FAMILIAPRODUCTO" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

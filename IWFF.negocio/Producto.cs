@@ -17,6 +17,9 @@ namespace IWFF.negocio
         public decimal stock_producto { get; set; }
         public decimal stock_critico_producto { get; set; }
         public decimal id_proveedor { get; set; }
+        public Proveedor proveedor { get; set; }
+        public decimal id_familia { get; set; }
+        public Familia familia { get; set; }
 
         //Conexion a BD por DAO
         FermeEntities db = new FermeEntities();
@@ -34,7 +37,22 @@ namespace IWFF.negocio
                 fecha_vencimiento_producto = (DateTime)p.FECHA_VENCIMIENTO,
                 stock_producto = p.STOCK_PRODUCTO,
                 stock_critico_producto = (decimal) p.STOCK_CRITICO_PRODUCTO,
-                id_proveedor = p.PROVEEDOR_ID_PROVEEDOR
+                id_proveedor = p.PROVEEDOR_ID_PROVEEDOR,
+                proveedor = new Proveedor()
+                {
+                    id_proveedor = p.PROVEEDOR.ID_PROVEEDOR,
+                    nombre_proveedor = p.PROVEEDOR.NOMBRE_PROVEEDOR,
+                    rubro_proveedor = p.PROVEEDOR.RUBRO_PROVEEDOR,
+                    telefono_proveedor = p.PROVEEDOR.TELEFONO_PROVEEDOR
+
+                },
+                id_familia = p.ID_FAMILIA,
+                familia = new Familia()
+                {
+                    id_familia = p.FAMILIA.ID_FAMILIA,
+                    nombre_familia = p.FAMILIA.NOMBRE_FAMILIA
+                }
+                
 
             }).ToList();
         }

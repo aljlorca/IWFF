@@ -75,6 +75,9 @@
     <Compile Include="FACTURA.cs">
       <DependentUpon>ModeloFerme.tt</DependentUpon>
     </Compile>
+    <Compile Include="FAMILIA.cs">
+      <DependentUpon>ModeloFerme.tt</DependentUpon>
+    </Compile>
     <Compile Include="ModeloFerme.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -14,8 +14,10 @@ namespace IWFF.negocio
         public decimal total_cotizacion { get; set; }
         public decimal empleado_cargo_id { get; set; }
         public decimal proveedor_id { get; set; }
+        public Proveedor proveedor  { get; set; }
         public decimal cliente_id { get; set; }
         public decimal empleado_id { get; set; }
+        public Empleado empleado { get; set; }
 
         //DAO
         FermeEntities db = new FermeEntities();
@@ -30,8 +32,15 @@ namespace IWFF.negocio
                 total_cotizacion = c.TOTAL_COTIZACION,
                 empleado_cargo_id = c.EMPLEADO_CARGO_ID,
                 proveedor_id = c.PROVEEDOR_ID,
+                proveedor = new Proveedor()
+                {
+                    id_proveedor = c.PROVEEDOR.ID_PROVEEDOR,
+                    nombre_proveedor = c.PROVEEDOR.NOMBRE_PROVEEDOR,
+                    rubro_proveedor = c.PROVEEDOR.RUBRO_PROVEEDOR,
+                    telefono_proveedor = c.PROVEEDOR.TELEFONO_PROVEEDOR
+                },
                 cliente_id = c.CLIENTE_RUT,
-                empleado_id = c.EMPLEADO_ID
+                empleado_id = c.EMPLEADO_ID,
 
             }
             ).ToList();

@@ -722,6 +722,8 @@
           <NavigationProperty Name="BOLETA" Relationship="Self.BOLETAFACTURA" FromRole="PRODUCTO" ToRole="BOLETA" />
           <NavigationProperty Name="COTIZACION" Relationship="Self.COTPROD" FromRole="PRODUCTO" ToRole="COTIZACION" />
           <NavigationProperty Name="FACTURA" Relationship="Self.FACTURAPRODUCTO" FromRole="PRODUCTO" ToRole="FACTURA" />
+          <NavigationProperty Name="FAMILIA" Relationship="ModeloBD.FAMILIAPRODUCTO" FromRole="PRODUCTO" ToRole="FAMILIA" />
+          <Property Name="ID_FAMILIA" Type="Decimal" Nullable="false" />
         </EntityType>
         <EntityType Name="PROVEEDOR">
           <Key>
@@ -1028,7 +1030,32 @@
             <End Role="FACTURA" EntitySet="FACTURA" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
+          <EntitySet Name="Familia" EntityType="ModeloBD.FAMILIA" />
+          <AssociationSet Name="FAMILIAPRODUCTO" Association="ModeloBD.FAMILIAPRODUCTO">
+            <End Role="FAMILIA" EntitySet="Familia" />
+            <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="FAMILIA">
+          <Key>
+            <PropertyRef Name="ID_FAMILIA" />
+          </Key>
+          <Property Name="ID_FAMILIA" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_FAMILIA" Type="String" Nullable="false" />
+          <NavigationProperty Name="PRODUCTO" Relationship="ModeloBD.FAMILIAPRODUCTO" FromRole="FAMILIA" ToRole="PRODUCTO" />
+        </EntityType>
+        <Association Name="FAMILIAPRODUCTO">
+          <End Type="ModeloBD.FAMILIA" Role="FAMILIA" Multiplicity="1" />
+          <End Type="ModeloBD.PRODUCTO" Role="PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FAMILIA">
+              <PropertyRef Name="ID_FAMILIA" />
+            </Principal>
+            <Dependent Role="PRODUCTO">
+              <PropertyRef Name="ID_FAMILIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

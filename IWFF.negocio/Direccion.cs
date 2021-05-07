@@ -12,6 +12,7 @@ namespace IWFF.negocio
         public decimal id_direccion { get; set; }
         public String direccion { get; set; }
         public decimal id_comuna { get; set; }
+        public Comuna comuna { get; set; }
         public decimal id_region { get; set; }
         //DAO
         FermeEntities db = new FermeEntities();
@@ -24,7 +25,14 @@ namespace IWFF.negocio
                 id_direccion = d.ID_DIRECCION,
                 direccion = d.DIRECCION,
                 id_comuna = d.COMUNA_ID_COMUNA,
+                comuna = new Comuna()
+                {
+                    id_comuna = d.COMUNA.ID_COMUNA,
+                    nombre_comuna = d.COMUNA.NOMBRE_COMUNA
+                   
+                },
                 id_region= d.COMUNA_ID_REGION
+
 
             }).ToList();
         }
