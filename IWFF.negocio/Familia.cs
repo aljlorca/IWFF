@@ -16,15 +16,14 @@ namespace IWFF.negocio
         FermeEntities db = new FermeEntities();
 
         //Listado de Familias
-        /*
         public List<Familia> ReadAll()
         {
-            return this.db.FAMILIA.Select(f => new Familia(){
+            return this.db.Familia.Select(f => new Familia(){
                 id_familia = f.ID_FAMILIA,
-                nombre_familia = f.NOM_FAMILIA
+                nombre_familia = f.NOMBRE_FAMILIA
             }
             ).ToList();
         }
-        */
+        
     }
 }
