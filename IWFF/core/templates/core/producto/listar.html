@@ -1,0 +1,92 @@
+{% extends 'core/base.html' %}
+
+{% block scripts %}
+
+<script>
+    function eliminar_producto(id){
+        Swal.fire({
+            "title":'¿Desea eliminar el producto seleccionado?',
+            "text": 'una vez eliminado no se puede deshacer el cambio',
+            "icon": 'question',
+            "showCancelButton": true,
+            "cancelButtonText": "Cancelar",
+            "confirmButtonText": "Aceptar",
+            "reverseButtons": true,
+            "confirmButtonColor": "#dc3545",
+            "cancelButtonColor": "#198754"
+        })
+        .then(function(result){
+            
+            if(result.isConfirmed){
+                window.location.href= "/eliminarproducto/"+id+"/"
+            }
+
+
+        })
+
+    }
+
+
+</script>
+
+{% endblock %}
+
+
+
+{% block contenido %}
+
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+<div class="col-12 col-md-6 offset-md-3 ">
+    <div class=" row p-3 mb-2 ">
+    
+        <div class="card">
+                <div class="card-body"> 
+                <h1>Listado de Productos</h1>
+                <table class="table table-stripped table-hover table-responsive-sm clearfix">
+
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Vencimiento</th>
+                        <th>Stock</th>
+                        <th>Familia</th>
+                        <th>Imagen</th>
+                        <th>Opciones</th>
+                
+                    </tr>
+                    {% for p in producto %}
+                    <tr>
+                        <td>{{ p.nombre | title }}</td>
+                        <td>${{ p.precio | intcomma}}</td>
+                        <td>{{ p.vencimiento }}</td>
+                        <td>{{ p.stock }}</td>
+                        <td>{{ p.familia }}</td>
+                        <td>
+                        {% if p.imagen %}
+                        <img src="{{ p.imagen.url }}" alt="imagen producto">
+                        {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'modificar_producto' p.id %}" class="btn btn-info">Modificar</a>
+                        </td>
+                        <td>
+                            <a href="#" onclick="eliminar_producto({{ p.id }})" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    {% endfor %}
+                </table>
+                <hr>
+                <div>
+                    {% include 'core/paginator.html' %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+{% endblock %}
