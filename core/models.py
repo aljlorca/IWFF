@@ -51,21 +51,24 @@ class persona(models.Model):
         return self.nombre
 
 
+
 opciones_consultas = [
 
     [0, 'Consulta'],
     [1, 'Reclamo'],
     [2, 'Sugerencia'],
-    [3, 'Felicitaciones']
+    [3, 'Felicitaciones'],
+    [4, 'Solicitud de registro'],
 
 ]
 
 class contacto(models.Model):
+
     nombre = models.CharField(max_length=50)
     correo = models.EmailField()
     tipo_consulta = models.IntegerField(choices=opciones_consultas)
     mensaje = models.TextField()
     avisos = BooleanField()
-
+    rut = models.IntegerField()
     def __str__(self):
         return self.nombre
