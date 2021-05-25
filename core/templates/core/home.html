@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+
+{% block contenido %}
+
+<h2>Productos</h2>
+{% load humanize %}
+<div class='productos'> 
+    <div class="producto">
+        <div class="contenedor_producto">
+            <table class="table table-stripped table-hover table-responsive-sm">
+                {% for p in producto %}
+                <tr>
+                    <td>{{ p.nombre | title }}</td>
+                    <td>{{ p.descripcion }}</td>
+                    <td>${{ p.precio | intcomma}}</td>
+                    <td>{{ p.stock }}</td>
+                    <td>{{ p.familia }}</td>
+                    <td>
+                    {% if p.imagen %}
+                    <img src="{{ p.imagen.url }}" alt="imagen producto">
+                    {% endif %}
+                    </td>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
