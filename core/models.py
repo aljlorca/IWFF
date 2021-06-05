@@ -17,7 +17,6 @@ class proveedor(models.Model):
     telefono = models.IntegerField()
     rubro = models.TextField()
 
-
     def __str__(self):
         return self.nombre      
 
