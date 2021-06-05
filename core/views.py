@@ -15,7 +15,7 @@ def home(request):
     data = {
         'producto': productos
     }
-    return render(request, 'core/home.html', data)
+    return render(request, 'core/home2.html', data)
 
 def contacto(request):
     data = {
@@ -102,3 +102,4 @@ def register(request):
             return redirect(to="home")
         data['from'] = formulario
     return render(request, 'registration/register.html', data)
+
