@@ -8,6 +8,11 @@ from .forms import *
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.contrib.auth import authenticate,login
+from django.db import connection
+import cx_Oracle 
+
+
+
 # Create your views here.
 
 def home(request):
@@ -45,27 +50,23 @@ def agregar_producto(request):
             messages.warning(request, "ERROR: El producto no fue registrado")
 
     return render(request, 'core/producto/agregar.html', data)
-
+#Funcion listar prodcutos
 def listar_productos(request):
-    productos = producto.objects.all()
-    page = request.GET.get('page', 1)
-
-    try:  
-        #cambiar ultimo digito por cantidad de productos que se muestren en el listado
-        paginator = Paginator(productos , 10)
-        productos = paginator.page(page)
-    except:
-        raise Http404
-
-
     data = {
-        'producto': productos,
-        'paginator': paginator
+        'producto':lista_prodcuto()
     }
     return render(request, 'core/producto/listar.html',data)
-
+#Procedimiento listar productos
+def lista_prodcuto():
+    django_cursor = connection.cursor()
+    cursor = django_cursor.connection.cursor()
+    out_cur = django_cursor.connection.cursor()
+    cursor.callproc('core_listar_productos', [out_cur])
+    lista = []
+    for fila in out_cur:
+        lista.append(fila)
+    return lista
 def modificar_producto(request, id):
-
     product = get_object_or_404(producto, id=id)
     data = {
         'form': AgregarProductoForms(instance=product)
@@ -80,14 +81,13 @@ def modificar_producto(request, id):
             data["form"] = formulario
             
     return render(request, 'core/producto/modificar.html', data)
-
 def eliminar_producto(request, id ):
     prod = get_object_or_404(producto, id=id)
     prod.delete()
     messages,success(request, "Producto eliminado correctamente")
     return redirect(to="listar_producto")
 
-
+#Registro de clientes
 def register(request):
     data = {
         'form':RegistroForms()
@@ -103,3 +103,42 @@ def register(request):
         data['from'] = formulario
     return render(request, 'registration/register.html', data)
 
+#Utilizacion de procesos de almacenado
+#Funcion listar familias
+def Familia(request):
+    data = {
+        'familia':listar_familia()
+    }
+    return render(request, 'core/familia/listar.html', data)
+#funcion de almacenado de familias
+def nueva_familia(request):
+    data = {
+
+        'familia':agregar_familia
+
+    }
+
+    if request.method == 'POST':
+        nombre = request.POST.get('nombre')
+        salida = agregar_familia(nombre)
+        if salida == 1:
+            messages.success(request, " Familia registrada correctamente ")
+
+    return render(request, 'core/familia/agregar.html',data)
+#Procedimiento para llamar a las familias
+def listar_familia():
+    django_cursor = connection.cursor()
+    cursor = django_cursor.connection.cursor()
+    out_cur = django_cursor.connection.cursor()
+    cursor.callproc('core_familia_listar', [out_cur])
+    lista = []
+    for fila in out_cur:
+        lista.append(fila)
+    return lista
+#Procedimiento para guardar familias
+def agregar_familia(nombre):
+    django_cursor = connection.cursor()
+    cursor = django_cursor.connection.cursor()
+    salida = cursor.var(cx_Oracle.NUMBER)
+    cursor.callproc('core_familia_agregar',[nombre,salida])
+    return salida.getvalue()
