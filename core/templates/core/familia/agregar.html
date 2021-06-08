@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+
+{% block contenido %}
+
+
+<div>
+    <h1>Agregar familia</h1>
+    <form action="" method="POST">
+
+        {% csrf_token %}
+        <label for="">Nombre Familia</label>
+        <input type="text" name="nombre" id="">
+        <br>
+        <button type="sumbit" value="guardar">
+        
+    </form>
+    {{mensaje}}
+</div>
+
+
+
+{% endblock %}

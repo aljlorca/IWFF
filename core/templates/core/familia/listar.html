@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+
+{% block contenido %}
+
+
+<div>
+    <h1>Listado de familias</h1>
+
+    <table> 
+        <tr>
+            <th>ID familia</th>
+            <th>Nombre</th>
+        </tr>
+        {% for f in familia %}
+        
+        <tr>
+            <td>{{ f.0 }}</td>
+            <td>{{ f.1 }}</td>
+        </tr>
+        
+        {% endfor %}
+
+    </table>
+</div>
+
+
+
+{% endblock %}

@@ -41,11 +41,19 @@
         <a class="nav-link" href="{% url 'listar_producto' %}">Listar Productos</a>
       </li>
       {% endif %}
+
       {% if perms.core.add_producto %}
-	  <li class="nav-item">
+	    <li class="nav-item">
         <a class="nav-link" href="{% url 'agregar_producto' %}">Agregar Productos</a>
       </li>
       {% endif %}
+
+      {% if perms.core.add_familia %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'nueva_familia' %}">Agregar Familia</a>
+      </li>
+      {% endif %}
+
       {% if user.is_authenticated %}
 	  <li class="nav-item">
         <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesion</a>
