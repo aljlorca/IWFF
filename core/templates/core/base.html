@@ -54,6 +54,12 @@
       </li>
       {% endif %}
 
+      {% if perms.core.view_familia %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'listar_familias' %}">Listar Familia</a>
+      </li>
+      {% endif %}
+
       {% if user.is_authenticated %}
 	  <li class="nav-item">
         <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesion</a>

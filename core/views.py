@@ -105,7 +105,7 @@ def register(request):
 
 #Utilizacion de procesos de almacenado
 #Funcion listar familias
-def Familia(request):
+def listar_familias(request):
     data = {
         'familia':listar_familia()
     }
