@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+
+{% block contenido %}
+
+
+<div>
+    <h1>Agregar Proveedor</h1>
+    <form action="" method="POST">
+
+        {% csrf_token %}
+        <label for="">Rut Proveedor</label>
+        <input type="number" name="rut" id="">
+        <label for="">Nombre Proveedor</label>
+        <input type="text" name="nombre" id="">
+        <label for="">Telefono Proveedor</label>
+        <input type="number" name="telefono" id="">
+        <label for="">Rubro Proveedor</label>
+        <input type="text" name="rubro" id="">
+        <br>
+        <button type="submit" id="btnGuardar" class="btn btn-primary">Guardar</button>
+        
+    </form>
+    {{mensaje}}
+</div>
+
+
+
+{% endblock %}

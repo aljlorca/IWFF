@@ -60,6 +60,17 @@
       </li>
       {% endif %}
 
+      {% if perms.core.view_proveedor %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'listar_proveedor' %}">Listar proveedor</a>
+      </li>
+      {% endif %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'nuevo_proveedor' %}">Agregar proveedor</a>
+      </li>
+      {% if perms.core.add_proveedor %}
+
+      {% endif %}
       {% if user.is_authenticated %}
 	  <li class="nav-item">
         <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesion</a>
@@ -97,7 +108,7 @@
         <script>
           Swal.fire(
 
-              "Exelente",
+              "Excelente",
               "{{m}}",
               "success"
           )

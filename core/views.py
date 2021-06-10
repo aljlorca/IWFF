@@ -14,13 +14,13 @@ import cx_Oracle
 
 
 # Create your views here.
-
+#Home de la pagina
 def home(request):
     data = {
         'producto': lista_prodcuto()
     }
     return render(request, 'core/home2.html', data)
-
+#formulario de contacto
 def contacto(request):
     data = {
         'form': ContactoForms()
@@ -33,7 +33,8 @@ def contacto(request):
         else:
             data["form"] = formulario
     return render(request, 'core/Contacto.html',data)
-
+#Productos
+#Procedimiento para agregar producto
 def agregar_producto(request):
 
     data = {
@@ -85,7 +86,6 @@ def eliminar_producto(request, id ):
     prod.delete()
     messages,success(request, "Producto eliminado correctamente")
     return redirect(to="listar_producto")
-
 #Registro de clientes
 def register(request):
     data = {
@@ -102,7 +102,7 @@ def register(request):
         data['from'] = formulario
     return render(request, 'registration/register.html', data)
 
-#Utilizacion de procesos de almacenado
+#Familias
 #Funcion listar familias
 def listar_familias(request):
     data = {
@@ -138,13 +138,13 @@ def agregar_familia(nombre):
     salida = cursor.var(cx_Oracle.NUMBER)
     cursor.callproc('core_familia_agregar',[nombre,salida])
     return salida.getvalue()
-
+#Procedimiento para eliminar familia    
 def eliminar_familia(request, id ):
     fam = get_object_or_404(familia, id=id)
     fam.delete()
     messages,success(request, "familia eliminado correctamente")
     return redirect(to="listar_familias")
-
+#Procedimiento para modificar familia
 def modificar_familia(request, id):
     famil = get_object_or_404(familia, id=id)
     data = {
@@ -160,3 +160,65 @@ def modificar_familia(request, id):
             data["form"] = formulario
             
     return render(request, 'core/familia/modificar.html', data)
+
+
+#Proveedores 
+#Funcion de listado de proveedores
+def listar_proveedor (request):
+    data = {
+        'proveedor':listar_proveedores()
+    }
+    return render(request,'core/proveedor/listar.html',data)
+#Funcion de almacenado de proveedor
+def nuevo_proveedor(request):
+    data = {
+        'proveedor':agregar_proveedor()
+    }
+    if request.method == 'POST':
+        rut = request.POST.get('rut')
+        nombre = request.POST.get('nombre')
+        telefono = request.POST.get('telefono')
+        rubro = request.POST.get('rubro')
+        salida = agregar_proveedor(rut,nombre,telefono,rubro)
+        if salida == 1:
+            messages.success(request, 'Proveedor registrado correctamente')
+    return render(request,'core/proveedor/agregar.html',data)
+#Procedimiento de listado de proveedores
+def listar_proveedores():
+    django_cursor = connection.cursor()
+    cursor = django_cursor.connection.cursor()
+    out_cur = django_cursor.connection.cursor()
+    cursor.callproc('core_proveedor_listar', [out_cur])
+    lista = []
+    for fila in out_cur:
+        lista.append(fila)
+    return lista
+#Procedimiento para guardar proveedores
+def agregar_proveedor(rut,nombre,telefono,rubro):
+    django_cursor = connection.cursor()
+    cursor = django_cursor.connection.cursor()
+    salida = cursor.var(cx_Oracle.NUMBER)
+    cursor.callproc('core_proveedor_agregar',[rut,nombre,telefono,rubro,salida])
+    return salida.getvalue()
+#Procedimiento para eliminar proveedor
+def eliminar_proveedor(request, id ):
+    prov = get_object_or_404(proveedor, id=id)
+    prov.delete()
+    messages,success(request, "Proveedor eliminado correctamente")
+    return redirect(to="listar_proveedor")
+#Procedimiento modificar Proveedor 
+def modificar_proveedor(request, id):
+    prov = get_object_or_404(familia, id=id)
+    data = {
+        'form': AgregarProveedorForms(instance=prov)
+    }
+    if request.method == 'POST':
+        formulario = AgregarProveedorForms(data=request.POST,instance=prov)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, " Proveedor modificada correctamente ")
+            return redirect(to="listar_proveedor")
+        else:
+            data["form"] = formulario
+            
+    return render(request, 'core/proveedor/modificar.html', data)

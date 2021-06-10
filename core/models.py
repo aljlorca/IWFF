@@ -2,7 +2,8 @@ from django.db import models
 from django.db.models.base import ModelState
 from django.db.models.expressions import Case
 from django.db.models.fields import BooleanField, CharField, NullBooleanField
-
+from django.contrib.auth.models import User
+from datetime import date,datetime
 #Create your models here
 
 class familia(models.Model):
@@ -17,10 +18,8 @@ class proveedor(models.Model):
     telefono = models.IntegerField()
     rubro = models.TextField()
 
-
     def __str__(self):
         return self.nombre      
-
 
 class producto(models.Model):
     id = models.CharField(max_length=17, primary_key=True)
@@ -46,19 +45,16 @@ class persona(models.Model):
     nombre = models.TextField()
     telefono = models.IntegerField()
     cargo = models.ForeignKey(cargo, on_delete=models.PROTECT)
-    
+    User = models.ForeignKey(User, on_delete=models.CASCADE,null=False,default=None)
     def __str__(self):
         return self.nombre
-
 
 opciones_consultas = [
 
     [0, 'Consulta'],
     [1, 'Reclamo'],
     [2, 'Sugerencia'],
-    [3, 'Felicitaciones']
-
-]
+    [3, 'Felicitaciones']]
 
 class contacto(models.Model):
     nombre = models.CharField(max_length=50)
@@ -69,3 +65,21 @@ class contacto(models.Model):
 
     def __str__(self):
         return self.nombre
+
+class factura(models.Model): 
+    fecha = models.DateField(default=datetime.today)
+    producto = models.ForeignKey(producto, on_delete=models.CASCADE)
+    canitdad_producto = models.IntegerField()
+    total = models.IntegerField()
+
+    def __str__(self):
+        return self.id
+
+class boleta(models.Model):
+    fecha = models.DateField(default=datetime.today)
+    producto = models.ForeignKey(producto, on_delete=models.CASCADE)
+    canitdad_producto = models.IntegerField()
+    total = models.IntegerField()
+
+    def __str__(self):
+        return self.id

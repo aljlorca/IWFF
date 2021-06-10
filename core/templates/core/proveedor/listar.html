@@ -1,0 +1,66 @@
+{% extends 'core/base.html' %}
+
+{% block scripts %}
+<script>
+    function eliminar_proveedor(id){
+        Swal.fire({
+            "title":'¿Desea eliminar el proveedor seleccionado?',
+            "text": 'una vez eliminado no se puede deshacer el cambio',
+            "icon": 'question',
+            "showCancelButton": true,
+            "cancelButtonText": "Cancelar",
+            "confirmButtonText": "Aceptar",
+            "reverseButtons": true,
+            "confirmButtonColor": "#dc3545",
+            "cancelButtonColor": "#198754"
+        })
+        .then(function(result){
+            
+            if(result.isConfirmed){
+                window.location.href= "/eliminarproveedor/"+id+"/"
+            }
+
+
+        })
+
+    }
+
+
+</script>
+{% endblock %}
+
+{% block contenido %}
+
+
+<div>
+    <h1>Listado de proveedores</h1>
+
+    <table> 
+        <tr>
+            <th>Rut </th>
+            <th>Nombre</th> 
+            <th>Telefono</th>
+            <th>Rubro</th>
+        </tr>
+        {% for p in proveedor %}
+        
+        <tr>
+            <td>{{ p.1 }}</td>
+            <td>{{ p.2 }}</td>
+            <td>{{ p.3 }}</td>
+            <td>{{ p.4 }}</td>
+        </tr>
+        <td>
+            <a href="{% url 'modificar_proveedor' p.0 %}" class="btn btn-info">Modificar</a>
+        </td>
+        <td>
+            <a href="#" onclick="eliminar_proveedor({{ p.0 }})" class="btn btn-danger">Eliminar</a>
+        </td>
+        {% endfor %}
+
+    </table>
+</div>
+
+
+
+{% endblock %}
