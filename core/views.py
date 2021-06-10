@@ -16,9 +16,8 @@ import cx_Oracle
 # Create your views here.
 
 def home(request):
-    productos = producto.objects.all()
     data = {
-        'producto': productos
+        'producto': lista_prodcuto()
     }
     return render(request, 'core/home2.html', data)
 
@@ -61,7 +60,7 @@ def lista_prodcuto():
     django_cursor = connection.cursor()
     cursor = django_cursor.connection.cursor()
     out_cur = django_cursor.connection.cursor()
-    cursor.callproc('core_listar_productos', [out_cur])
+    cursor.callproc('core_productos_listar', [out_cur])
     lista = []
     for fila in out_cur:
         lista.append(fila)
@@ -113,11 +112,8 @@ def listar_familias(request):
 #funcion de almacenado de familias
 def nueva_familia(request):
     data = {
-
-        'familia':agregar_familia
-
+        'familia':agregar_familia()
     }
-
     if request.method == 'POST':
         nombre = request.POST.get('nombre')
         salida = agregar_familia(nombre)
@@ -142,3 +138,25 @@ def agregar_familia(nombre):
     salida = cursor.var(cx_Oracle.NUMBER)
     cursor.callproc('core_familia_agregar',[nombre,salida])
     return salida.getvalue()
+
+def eliminar_familia(request, id ):
+    fam = get_object_or_404(familia, id=id)
+    fam.delete()
+    messages,success(request, "familia eliminado correctamente")
+    return redirect(to="listar_familias")
+
+def modificar_familia(request, id):
+    famil = get_object_or_404(familia, id=id)
+    data = {
+        'form': AgregarFamiliaForms(instance=famil)
+    }
+    if request.method == 'POST':
+        formulario = AgregarFamiliaForms(data=request.POST,instance=famil)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, " Familia modificada correctamente ")
+            return redirect(to="listar_familias")
+        else:
+            data["form"] = formulario
+            
+    return render(request, 'core/familia/modificar.html', data)

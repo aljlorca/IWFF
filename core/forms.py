@@ -4,7 +4,7 @@ from django.contrib import auth
 from django.db import models
 from django.db.models import fields
 from django.forms import widgets    
-from .models import contacto, producto
+from .models import contacto, familia, producto
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -26,8 +26,12 @@ class AgregarProductoForms(forms.ModelForm):
         "vencimiento": forms.SelectDateWidget() 
         }
 
+class AgregarFamiliaForms(forms.ModelForm):
+    class Meta:
+        model = familia
+        fields = '__all__'
+
 
 class RegistroForms(UserCreationForm):
-
     pass
 
