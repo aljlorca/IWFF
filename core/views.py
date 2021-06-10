@@ -66,6 +66,7 @@ def lista_prodcuto():
     for fila in out_cur:
         lista.append(fila)
     return lista
+#Procedimiento para modificar producto
 def modificar_producto(request, id):
     product = get_object_or_404(producto, id=id)
     data = {
@@ -81,6 +82,7 @@ def modificar_producto(request, id):
             data["form"] = formulario
             
     return render(request, 'core/producto/modificar.html', data)
+#Procedimiento para eliminar producto
 def eliminar_producto(request, id ):
     prod = get_object_or_404(producto, id=id)
     prod.delete()
@@ -112,15 +114,18 @@ def listar_familias(request):
 #funcion de almacenado de familias
 def nueva_familia(request):
     data = {
-        'familia':agregar_familia()
+        'form': AgregarFamiliaForms()  
     }
     if request.method == 'POST':
-        nombre = request.POST.get('nombre')
-        salida = agregar_familia(nombre)
-        if salida == 1:
+        formulario = AgregarFamiliaForms(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
             messages.success(request, " Familia registrada correctamente ")
+        else:
+            data["form"] = formulario
+            messages.warning(request, "ERROR: La Familia no fue registrada")
 
-    return render(request, 'core/familia/agregar.html',data)
+    return render(request, 'core/producto/agregar.html', data)
 #Procedimiento para llamar a las familias
 def listar_familia():
     django_cursor = connection.cursor()
@@ -172,17 +177,18 @@ def listar_proveedor (request):
 #Funcion de almacenado de proveedor
 def nuevo_proveedor(request):
     data = {
-        'proveedor':agregar_proveedor()
+        'form': AgregarProveedorForms()  
     }
     if request.method == 'POST':
-        rut = request.POST.get('rut')
-        nombre = request.POST.get('nombre')
-        telefono = request.POST.get('telefono')
-        rubro = request.POST.get('rubro')
-        salida = agregar_proveedor(rut,nombre,telefono,rubro)
-        if salida == 1:
-            messages.success(request, 'Proveedor registrado correctamente')
-    return render(request,'core/proveedor/agregar.html',data)
+        formulario = AgregarProveedorForms(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, " Proveedor registrado correctamente ")
+        else:
+            data["form"] = formulario
+            messages.warning(request, "ERROR: El proveedor no fue registrado")
+
+    return render(request, 'core/producto/agregar.html', data)
 #Procedimiento de listado de proveedores
 def listar_proveedores():
     django_cursor = connection.cursor()
