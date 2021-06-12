@@ -16,9 +16,16 @@ import cx_Oracle
 # Create your views here.
 #Home de la pagina
 def home(request):
+<<<<<<< HEAD
+    productos = producto.objects.all()
+
+    data = {
+        'producto': productos
+=======
     productos = producto.objects.all() 
     data = {
         'producto': productos,
+>>>>>>> edd1c0fbca82053b93a6fbd791d28985084afce3
     }
     return render(request, 'core/home2.html', data)
 #formulario de contacto
