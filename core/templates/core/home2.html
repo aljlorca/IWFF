@@ -18,14 +18,14 @@
         </div>
       </div>
       <div class="carousel-item">
-        <img src="{% static 'css/herramientas2.png' %}" class="d-block w-100" alt="...">
+        <img src="{% static 'css/herramientass.png' %}" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
             <h5>Cotizamos tus requerimientos</h5>
             <p>Cotizaciones completas y en tiempo pactado</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="{% static 'css/herramientas3.png' %}" class="d-block w-100" alt="...">
+        <img src="{% static 'css/herramientasss.png' %}" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
             <h5>Entrega On Time</h5>
             <p>Recibe tu pedido en tiempo y lugar pactado</p>
@@ -48,67 +48,22 @@
     <div class="container">
       <div class="row text-center">
         <div class="col-md-4 pb-1 pb-md-0">
-          <div class="card">
-            <img class="card-img-top" src="{% static '/images/logo-fs-web.png' %}" alt="imagen producto">
-            <div class="card-body">
-              <h5 class="card-title">Producto</h5>
-              <p class="card-text">Descripcion aqui</p>
-              <a href="#" class="btn btn-primary">Añadir al carrito</a>
-            </div>
-          </div>
+            
         </div>
-        <div class="col-md-4 pb-1 pb-md-0">
-          <div class="card">
-            <img class="card-img-top" src="{% static '/images/logo-fs-web.png' %}" alt="imagen producto">
-            <div class="card-body">
-              <h5 class="card-title">Producto</h5>
-              <p class="card-text">Descripcion aqui</p>
-              <a href="#" class="btn btn-primary">Añadir al carrito</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 pb-1 pb-md-0">
-          <div class="card">
-            <img class="card-img-top" src="{% static '/images/logo-fs-web.png' %}" alt="imagen producto">
-            <div class="card-body">
-              <h5 class="card-title">Producto</h5>
-              <p class="card-text">Descripcion aqui</p>
-              <a href="#" class="btn btn-primary">Añadir al carrito</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row text-center mt-4">
-        <div class="col-md-4 pb-1 pb-md-0">
-          <div class="card">
-            <img class="card-img-top" src="{% static '/images/logo-fs-web.png' %}" alt="imagen producto">
-            <div class="card-body">
-              <h5 class="card-title">Producto</h5>
-              <p class="card-text">Descripcion aqui</p>
-              <a href="#" class="btn btn-primary">Añadir al carrito</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 pb-1 pb-md-0">
-          <div class="card">
-            <img class="card-img-top" src="{% static '/images/logo-fs-web.png' %}" alt="imagen producto">
-            <div class="card-body">
-              <h5 class="card-title">Producto</h5>
-              <p class="card-text">Descripcion aqui</p>
-              <a href="#" class="btn btn-primary">Añadir al carrito</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 pb-1 pb-md-0">
-          <div class="card">
-            <img class="card-img-top" src="{% static '/images/logo-fs-web.png' %}" alt="imagen producto">
-            <div class="card-body">
-              <h5 class="card-title">Producto</h5>
-              <p class="card-text">Descripcion aqui</p>
-              <a href="#" class="btn btn-primary">Añadir al carrito</a>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </div>
+    {% for p in productos %}
+              
+              <div class="card">
+                <img class="card-img-top" src="{% static '/images/logo-fs-web.png' %}" alt="imagen producto">
+                <div class="card-body">
+                  <h5 class="card-title">{{ p.nombre }}</h5>
+                  <p class="card-text">{{ p.descripcion }}</p>
+                  <p class="card-text">{{ p.precio }}</p>
+                  <a href="#" class="btn btn-primary">Añadir al carrito</a>
+                </div>
+              </div>
+              
+              {% endfor %}
 {% endblock %}

@@ -4,12 +4,11 @@
 
 {% load crispy_forms_tags %}
 
-<div>
-    <div class="grid">
-        <div></div>
+<div class="col-12 col-md-6 offset-md-3 ">
+    <div class=" row p-3 mb-2 ">
         <div class="card">
                 <div class="card-body">
-                <h1>Agregar Producto</h1>
+                    <h1>Agregar Producto</h1>
                 <form action="" method="post" enctype="multipart/form-data">
 
                     {% csrf_token %}
@@ -26,11 +25,8 @@
 
                 </form>
                 {{mensaje}}
-            </div>
+                </div>
         </div>
-        <div>
-        </div>
-
     </div>
 </div>
 
