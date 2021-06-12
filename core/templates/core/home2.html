@@ -52,7 +52,7 @@
         {% for p in producto %}
           {% if p.oferta == 1 %}
         <div class="col-md-4 pb-1 pb-md-0">
-<<<<<<< HEAD
+
           
               
           <div class="card">
@@ -64,25 +64,10 @@
               <a href="#" class="btn btn-primary">Añadir al carrito</a>
             </div>
           </div>        
-=======
-<<<<<<< HEAD
-          <div class="card">
-            <img class="card-img-top" src="{% static '/images/logo-fs-web.png' %}" alt="imagen producto">
-            <div class="card-body">
-              <h5 class="card-title">{{p.nombre}}</h5>
-              <p class="card-text">Descripcion aqui</p>
-              <a href="#" class="btn btn-primary">Añadir al carrito</a>
-            </div>
-          </div>
-=======
-            
->>>>>>> edd1c0fbca82053b93a6fbd791d28985084afce3
->>>>>>> 8faf849145dd02ce8779b9fa8835195527df5981
         </div>
         {% endif %}
         {% endfor %}
       </div>
-      {% endfor %}
     </div>
     
 {% endblock %}
