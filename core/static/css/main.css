@@ -219,3 +219,10 @@ label {
     align-items: center;
     width: 100%;
 }
+.card-title {
+    font-weight: bolder;
+    font-size: 20px;
+}
+.card-text {
+    font-weight: bold;
+}
