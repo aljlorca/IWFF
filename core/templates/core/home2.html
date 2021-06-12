@@ -45,39 +45,20 @@
   <hr>
     <h2 class="text-center">PRODUCTOS RECOMENDADOS</h2>
     <hr>
-
     <div class="container">
-      {% for p in productos %}
+    {% for p in productos %}
       <div class="row text-center">
         <div class="col-md-4 pb-1 pb-md-0">
-<<<<<<< HEAD
           <div class="card">
             <img class="card-img-top" src="{% static '/images/logo-fs-web.png' %}" alt="imagen producto">
             <div class="card-body">
               <h5 class="card-title">{{p.nombre}}</h5>
-              <p class="card-text">Descripcion aqui</p>
+              <p class="card-text">{{p.descripcion}}</p>
               <a href="#" class="btn btn-primary">Añadir al carrito</a>
             </div>
           </div>
-=======
-            
->>>>>>> edd1c0fbca82053b93a6fbd791d28985084afce3
         </div>
-        
       </div>
-      {% endfor %}
+    {% endfor %}
     </div>
-    {% for p in productos %}
-              
-              <div class="card">
-                <img class="card-img-top" src="{% static '/images/logo-fs-web.png' %}" alt="imagen producto">
-                <div class="card-body">
-                  <h5 class="card-title">{{ p.nombre }}</h5>
-                  <p class="card-text">{{ p.descripcion }}</p>
-                  <p class="card-text">{{ p.precio }}</p>
-                  <a href="#" class="btn btn-primary">Añadir al carrito</a>
-                </div>
-              </div>
-              
-              {% endfor %}
 {% endblock %}
