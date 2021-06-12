@@ -1,6 +1,7 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% load humanize %}
+
 {% block contenido %}
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -41,33 +42,26 @@
       <span class="sr-only">Siguiente</span>
     </a>
   </div>
-
   <hr>
     <h2 class="text-center">PRODUCTOS RECOMENDADOS</h2>
     <hr>
-
     <div class="container">
-      {% for p in productos %}
       <div class="row text-center">
         {% for p in producto %}
           {% if p.oferta == 1 %}
-        <div class="col-md-4 pb-1 pb-md-0">
-
-          
-              
-          <div class="card">
-            <img class="card-img-top" src="{% static '/images/logo-fs-web.png' %}" alt="imagen producto">
-            <div class="card-body">
-              <h5 class="card-title">{{ p.nombre }}</h5>
-              <p class="card-text">{{ p.descripcion }}</p>
-              <p class="card-text">${{ p.precio | intcomma}}</p>
-              <a href="#" class="btn btn-primary">Añadir al carrito</a>
+            <div class="col-md-4 pb-1 pb-md-0">
+              <div class="card">
+                <img class="card-img-top" src="{% static '/images/logo-fs-web.png' %}" alt="imagen producto">
+                <div class="card-body">
+                  <h5 class="card-title">{{ p.nombre }}</h5>
+                  <p class="card-text">{{ p.descripcion }}</p>
+                  <p class="card-text">${{ p.precio | intcomma}}</p>
+                  <a href="#" class="btn btn-primary">Añadir al carrito</a>
+                </div>
+              </div>        
             </div>
-          </div>        
-        </div>
-        {% endif %}
+          {% endif %}
         {% endfor %}
       </div>
-    </div>
-    
+    </div>    
 {% endblock %}

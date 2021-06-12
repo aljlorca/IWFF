@@ -229,3 +229,8 @@ def modificar_proveedor(request, id):
             data["form"] = formulario
             
     return render(request, 'core/proveedor/modificar.html', data)
+
+def carrito(request):
+    data = {
+    }
+    return render(request, 'core/carrito.html', data)
