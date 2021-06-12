@@ -9,17 +9,23 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from django.contrib.auth import authenticate,login
 from django.db import connection
-import cx_Oracle 
+import cx_Oracle
 
 
 
 # Create your views here.
 #Home de la pagina
 def home(request):
+<<<<<<< HEAD
     productos = producto.objects.all()
 
     data = {
         'producto': productos
+=======
+    productos = producto.objects.all() 
+    data = {
+        'producto': productos,
+>>>>>>> edd1c0fbca82053b93a6fbd791d28985084afce3
     }
     return render(request, 'core/home2.html', data)
 #formulario de contacto
@@ -46,7 +52,7 @@ def agregar_producto(request):
         formulario = AgregarProductoForms(data=request.POST, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
-            messages.success(request, " Producto registrado correctamente ")
+            messages.success(request, "Producto registrado correctamente ")
         else:
             data["form"] = formulario
             messages.warning(request, "ERROR: El producto no fue registrado")
@@ -127,7 +133,7 @@ def nueva_familia(request):
             data["form"] = formulario
             messages.warning(request, "ERROR: La Familia no fue registrada")
 
-    return render(request, 'core/producto/agregar.html', data)
+    return render(request, 'core/familia/agregar.html', data)
 #Procedimiento para llamar a las familias
 def listar_familia():
     django_cursor = connection.cursor()
@@ -190,7 +196,7 @@ def nuevo_proveedor(request):
             data["form"] = formulario
             messages.warning(request, "ERROR: El proveedor no fue registrado")
 
-    return render(request, 'core/producto/agregar.html', data)
+    return render(request, 'core/proveedor/agregar.html', data)
 #Procedimiento de listado de proveedores
 def listar_proveedores():
     django_cursor = connection.cursor()
