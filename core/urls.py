@@ -7,7 +7,7 @@ from django.contrib import admin
 urlpatterns = [
     path('',home, name='home'), 
     #contacto
-    path('Contacto/', contacto, name="contacto"),
+    path('contacto/', contacto, name="contacto"),
     #producto
     path('agregarproducto/', agregar_producto, name="agregar_producto"),
     path('listarproducto/', listar_productos, name="listar_producto"),
