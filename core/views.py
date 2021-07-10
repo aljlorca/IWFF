@@ -244,7 +244,6 @@ def statusTrx(request):
     }
     return render(request, 'core/tbk/statusTbk.html',data)
 
-
 #Carrito
 @csrf_exempt
 def cart(request):
@@ -254,4 +253,4 @@ def cart(request):
         'producto': product,
         'resultado': get_initTrxTBK(monto),
     }
-    return render(request, 'core/carro/cart.html', data)    
+    return render(request, 'core/cart.html', data)    
