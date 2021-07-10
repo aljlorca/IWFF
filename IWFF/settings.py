@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'carro',
     'colorfield',
     'django.contrib.humanize',
     'crispy_forms',

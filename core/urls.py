@@ -25,4 +25,10 @@ urlpatterns = [
     path('nuevo_proveedor/', nuevo_proveedor, name='nuevo_proveedor'),
     path('modificarproveedor/<id>/', modificar_proveedor, name="modificar_proveedor"),
     path('eliminarproveedor/<id>/', eliminar_proveedor, name="eliminar_proveedor"),
+    #TBK
+    path('tbkRes/', statusTrx, name="tbkRes"),
+    #Carrito
+    path('cart/', cart, name="cart"),
+
+
 ]

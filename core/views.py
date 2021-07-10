@@ -1,3 +1,4 @@
+import carro
 from django.contrib.messages.api import success
 from django.core import paginator
 from django.http import request
@@ -10,7 +11,10 @@ from django.core.paginator import Paginator
 from django.contrib.auth import authenticate,login
 from django.db import connection
 import cx_Oracle
-
+from django.views.decorators.csrf import csrf_exempt
+from .services import *
+from carro.context_processor import *
+import json
 
 
 # Create your views here.
@@ -20,7 +24,7 @@ def home(request):
     data = {
         'producto': productos,
     }
-    return render(request, 'core/home2.html', data)
+    return render(request, 'core/home.html', data)
 #formulario de contacto
 def contacto(request):
     data = {
@@ -54,7 +58,7 @@ def agregar_producto(request):
 #Funcion listar prodcutos
 def listar_productos(request):
     data = {
-        'producto':lista_prodcuto()
+        'producto':lista_prodcuto(),
     }
     return render(request, 'core/producto/listar.html',data)
 #Procedimiento listar productos
@@ -229,3 +233,25 @@ def modificar_proveedor(request, id):
             data["form"] = formulario
             
     return render(request, 'core/proveedor/modificar.html', data)
+
+
+
+#TBK
+@csrf_exempt
+def statusTrx(request):
+    data = {
+        'resultado': get_statusTBK(request),
+    }
+    return render(request, 'core/tbk/statusTbk.html',data)
+
+
+#Carrito
+@csrf_exempt
+def cart(request):
+    product = producto.objects.all()
+    monto = 123123
+    data = {
+        'producto': product,
+        'resultado': get_initTrxTBK(monto),
+    }
+    return render(request, 'core/carro/cart.html', data)    
