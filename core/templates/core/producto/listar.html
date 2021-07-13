@@ -47,30 +47,33 @@
                 <table class="table table-stripped table-hover table-responsive-sm clearfix">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">Destacado</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Precio</th>
-                            <th scope="col">Vencimiento</th>
-                            <th scope="col">Stock</th>
-                            <th scope="col">Familia</th>
-                            <th scope="col">Opciones</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Vencimiento</th>
+                            <th>Stock</th>
+                            <th>Familia</th>
+                            <th>Destacado</th>
+                            <th>Opciones</th>
                     
                         </tr>
-                    </thead>
-                    <tbody>
                         {% for p in producto %}
                         <tr>
-                            <td scope="row">{{ p.10 }}</td>
-                            <td scope="row">{{ p.1 | title }}</td>
-                            <td scope="row">{{ p.3 | intcomma}}</td>
-                            <td scope="row">{{ p.4 | date}}</td>
-                            <td scope="row">{{ p.7 }}</td>
-                            <td scope="row">{{ p.10 }}</td>
-                            <td scope="row">
+                            <td>{{ p.1 | title }}</td>
+                            <td>{{ p.3 | intcomma}}</td>
+                            <td>{{ p.4 }}</td>
+                            <td>{{ p.5 }}</td>
+                            {% for f in familia %}
+                            <td>
+                                <div value="{{ f.0 }}">{{ f.1 }}</div>
+                            </td>
+                            {% endfor %}
+                            <td>{{ p.10 }}</td>
+                            <td>
                                 <a href="{% url 'modificar_producto' p.0 %}" class="btn btn-info">Modificar</a>
+                            </td>
+                            <td>
                                 <a href="#" onclick="eliminar_producto({{ p.0 }})" class="btn btn-danger">Eliminar</a>
                             </td>
-                        </tr>
                         {% endfor %}
                     </tbody>
 
