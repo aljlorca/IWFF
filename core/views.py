@@ -66,7 +66,7 @@ def lista_prodcuto():
     django_cursor = connection.cursor()
     cursor = django_cursor.connection.cursor()
     out_cur = django_cursor.connection.cursor()
-    cursor.callproc('core_productos_listar', [out_cur])
+    cursor.callproc('CORE_PRODUCTOS_LISTAR', [out_cur])
     lista = []
     for fila in out_cur:
         lista.append(fila)
@@ -234,8 +234,6 @@ def modificar_proveedor(request, id):
             
     return render(request, 'core/proveedor/modificar.html', data)
 
-
-
 #TBK
 @csrf_exempt
 def statusTrx(request):
@@ -253,4 +251,4 @@ def cart(request):
         'producto': product,
         'resultado': get_initTrxTBK(monto),
     }
-    return render(request, 'core/cart.html', data)    
+    return render(request, 'core/cart.html', data)
