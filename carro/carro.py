@@ -6,37 +6,37 @@ class Carro:
         if not carro:
             carro=self.session["carro"]={}
         #else:
-            self.carro=carro
+        self.carro=carro
 
     def agregar(self, Producto):
-        if(Producto.id not in self.carro.keys()):
+        if(str(Producto.id) not in self.carro.keys()):
             self.carro[Producto.id]={
                 "producto_id":Producto.id,
                 "nombre":Producto.nombre,
-                "precio":Producto.precio,
+                "precio":str(Producto.precio),
                 "cantidad":1,
                 "imagen":Producto.imagen.url
             }
         else:
             for key, value in self.carro.items():
-                if key==Producto.id:
+                if key==str(Producto.id):
                     value["cantidad"]=value["cantidad"]+1
                     value["precio"]=int(value["precio"])+Producto.precio
                     break
         self.guardar_carro()
 
     def agregar_home(self, Producto):
-        if(Producto.id not in self.carro.keys()):
+        if(str(Producto.id) not in self.carro.keys()):
             self.carro[Producto.id]={
                 "producto_id":Producto.id,
                 "nombre":Producto.nombre,
-                "precio":Producto.precio,
+                "precio":str(Producto.precio),
                 "cantidad":1,
                 "imagen":Producto.imagen.url
             }
         else:
             for key, value in self.carro.items():
-                if key==Producto.id:
+                if key==str(Producto.id):
                     value["cantidad"]=value["cantidad"]+1
                     value["precio"]=int(value["precio"])+Producto.precio
                     break

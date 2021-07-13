@@ -1,7 +1,6 @@
 from collections import namedtuple
 from django.urls import path
 from django.urls.conf import include
-from requests.models import parse_header_links
 from .views import *    
 from django.contrib import admin
 
@@ -26,6 +25,10 @@ urlpatterns = [
     path('nuevo_proveedor/', nuevo_proveedor, name='nuevo_proveedor'),
     path('modificarproveedor/<id>/', modificar_proveedor, name="modificar_proveedor"),
     path('eliminarproveedor/<id>/', eliminar_proveedor, name="eliminar_proveedor"),
+    #TBK
+    path('tbkRes/', statusTrx, name="tbkRes"),
     #Carrito
-    path('carrito/', carrito, name='carrito'),
+    path('cart/', cart, name="cart"),
+
+
 ]

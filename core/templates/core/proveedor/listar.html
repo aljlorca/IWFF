@@ -32,19 +32,15 @@
 {% block contenido %}
 
 
-<div class="col-12 col-md-6 offset-md-3 ">
-    <div class=" row p-3 mb-2 ">
-    
-        <div class="card">
-                <div class="card-body"> 
+<div>
     <h1>Listado de proveedores</h1>
 
     <table> 
         <tr>
-            <th class="thcss">Rut </th>
-            <th class="thcss">Nombre</th> 
-            <th class="thcss">Telefono</th>
-            <th class="thcss">Rubro</th>
+            <th>Rut </th>
+            <th>Nombre</th> 
+            <th>Telefono</th>
+            <th>Rubro</th>
         </tr>
         {% for p in proveedor %}
         
@@ -64,7 +60,7 @@
 
     </table>
 </div>
-</div>
-</div>
-</div>
+
+
+
 {% endblock %}

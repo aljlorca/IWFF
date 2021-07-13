@@ -39,7 +39,7 @@ def get_statusTBK(request):
         respuesta = requests.get(url+token,headers=header).json()
         resTrans = respuesta['vci']
         if (resTrans == 'TSY'):
-            resTrans = 'Transacción Exitosa'
+            resTrans = 'Transacción Aprobada'
             resBool = True
         elif (resTrans == 'TSN'):
             resTrans = 'Autenticación Fallida'
@@ -72,4 +72,3 @@ def get_statusTBK(request):
     #response = get_status_trx(url, request.POST['token_ws'])
     if response:
        return response
-
