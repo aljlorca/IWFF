@@ -12,24 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
     <link href="{% static 'css/carro.css' %}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
-    <script type="text/javascript">
-      var user = '{{request.user}}'
-      function getToken(nombre){
-        var cookieValue = null;
-        if (document.cookie && document.cookie !== ''){
-          var cookies = document.cookie.split(';');
-          for (var i = 0; i < cookies.length; i++){
-            var cookie = cookies[i].trim();
-            if (cookie.substring(0, nombre.length + 1) === (nombre + '=')){
-              cookieValue = decodeURIComponent(cookie.substring(nombre.length + 1));
-              break;
-            }
-          }
-        }
-        return cookieValue;
-      }
-      var csrftoken = getToken('csrftoken');
-  </script>
+
 </head>
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark">
@@ -129,10 +112,6 @@
 
       {% block scripts %}    
       {% endblock %}
-
-    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
-
-
 
     {% if messages %}
       {% for m in messages %}

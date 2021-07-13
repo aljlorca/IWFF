@@ -49,6 +49,7 @@
       <div class="row text-center">
         {% for p in producto %}
           {% if p.oferta == 1 %}
+          {% if p.stock %}
           <div class="col-md-4 pb-1 pb-md-0">
             <div class="card">
               <div>
@@ -63,9 +64,9 @@
             </div>        
           </div>
           {% endif %}
+          {% endif %}
         {% endfor %}
       </div>
     </div>
-    
-    
+
 {% endblock %}
