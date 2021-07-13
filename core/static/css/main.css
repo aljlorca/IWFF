@@ -226,3 +226,39 @@ label {
 .card-text {
     font-weight: bold;
 }
+.card-body {
+    align-items: center;
+}
+.thcss {
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center center;
+}
+.shopping-cart-items {
+    padding: 20px 0px;
+  }
+  
+  .shopping-cart-header {
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .shopping-cart-image {
+    max-width: 80px;
+    border-radius: 20px;
+  }
+  
+  .shopping-cart-quantity-input {
+    max-width: 45px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #eee;
+    padding: 5px;
+  }
+  
+  .shopping-cart-total {
+    min-height: 96px;
+  }
+
+  .ion-icon {
+    color: blue;
+  }

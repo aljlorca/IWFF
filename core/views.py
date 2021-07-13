@@ -234,21 +234,7 @@ def modificar_proveedor(request, id):
             
     return render(request, 'core/proveedor/modificar.html', data)
 
-#TBK
-@csrf_exempt
-def statusTrx(request):
+def carrito(request):
     data = {
-        'resultado': get_statusTBK(request),
     }
-    return render(request, 'core/tbk/statusTbk.html',data)
-
-#Carrito
-@csrf_exempt
-def cart(request):
-    product = producto.objects.all()
-    monto = 123123
-    data = {
-        'producto': product,
-        'resultado': get_initTrxTBK(monto),
-    }
-    return render(request, 'core/cart.html', data)
+    return render(request, 'core/carrito.html', data)
