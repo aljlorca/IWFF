@@ -1,3 +1,4 @@
+from django.forms.forms import Form
 import carro
 from django.contrib.messages.api import success
 from django.core import paginator
@@ -15,7 +16,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .services import *
 from carro.context_processor import *
 import json
-
+from usuario.forms import FormularioUsuario
 
 # Create your views here.
 #Home de la pagina
@@ -96,10 +97,10 @@ def eliminar_producto(request, id ):
 #Registro de clientes
 def register(request):
     data = {
-        'form':RegistroForms()
+        'form':FormularioUsuario()
     }
     if request.method == 'POST':
-        formulario = RegistroForms(data=request.POST)
+        formulario = FormularioUsuario(data=request.POST)
         if formulario.is_valid():
             formulario.save()
             user = authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password1"])

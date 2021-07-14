@@ -10,8 +10,6 @@ class ProductoAdmin(admin.ModelAdmin):
     list_filter = ['stock','familia']
     list_per_page = 50
 
-class CargoAdmin(admin.ModelAdmin):
-    list_display = ['nombre', 'descripcio']
 
 class ProveedorAdmin(admin.ModelAdmin):
     list_display = ['rut', 'nombre', 'telefono', 'rubro']
@@ -22,6 +20,5 @@ class ProveedorAdmin(admin.ModelAdmin):
 admin.site.register(familia)
 admin.site.register(proveedor, ProveedorAdmin)
 admin.site.register(producto, ProductoAdmin)
-admin.site.register(cargo, CargoAdmin)
-admin.site.register(persona)
+admin.site.register(cargo)
 admin.site.register(contacto)   

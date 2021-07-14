@@ -5,7 +5,6 @@ from django.db import models
 from django.db.models import fields
 from django.forms import widgets    
 from .models import *
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 class ContactoForms(forms.ModelForm):
@@ -32,15 +31,9 @@ class AgregarFamiliaForms(forms.ModelForm):
         fields = '__all__'
 
 
-class RegistroForms(UserCreationForm):
-
-    pass
 
 
-class PersonaFoms(forms.ModelForm):
-    class Meta:
-        model = persona
-        fields = '__all__'
+
 
 class AgregarProveedorForms(forms.ModelForm):
     class Meta:

@@ -2,10 +2,10 @@ from django.db import models
 from django.db.models.base import ModelState
 from django.db.models.expressions import Case
 from django.db.models.fields import BooleanField, CharField, NullBooleanField
-from django.contrib.auth.models import User
 from datetime import date,datetime
-#Create your models here
 
+
+#Create your models here
 class familia(models.Model):
     nombre = models.CharField(max_length=50)
 
@@ -39,14 +39,8 @@ class producto(models.Model):
 
 class cargo(models.Model):
     nombre = models.CharField(max_length=20)
-    descripcio = models.TextField()
-
-class persona(models.Model):
-    rut = models.IntegerField()
-    nombre = models.TextField()
-    telefono = models.IntegerField()
-    cargo = models.ForeignKey(cargo, on_delete=models.PROTECT)
-    User = models.ForeignKey(User, on_delete=models.CASCADE,null=False,default=None)
+    descripcion = models.TextField()
+    
     def __str__(self):
         return self.nombre
 
