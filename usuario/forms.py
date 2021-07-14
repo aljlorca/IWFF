@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.db.models import fields
 from django.forms import widgets
+from django.forms.forms import Form
 from usuario.models import Usuario
 
 
@@ -27,7 +28,7 @@ class FormularioUsuario(forms.ModelForm):
     ))
     class Meta:
         model = Usuario
-        fields = ('username','correo','nombre_completo','rut','telefono')
+        fields = ('username','correo','nombre_completo','rut','telefono','direccion')
         widgets = {
             'correo': forms.EmailInput(
                 attrs= {
@@ -59,6 +60,12 @@ class FormularioUsuario(forms.ModelForm):
                     'placeholder':'Ingrese su telefono de 9 digitos'
                 }
             ),
+            'direccion': forms.TextInput(
+                attrs= {
+                    'class':'form-control',
+                    'placeholder':'Ingrese su dirección'
+                }
+            )
         }
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
