@@ -5,7 +5,7 @@ from django.db.models.query import prefetch_related_objects
 from core.models import cargo
 # Create your models here.
 class UsuarioManager(BaseUserManager):
-    def create_user(self,username,correo,nombre_completo,rut,telefono, password=None):
+    def create_user(self,username,correo,nombre_completo,rut,telefono, direccion,password=None):
         if not correo:
             raise ValueError('El usuario debe tener un correo electronico')
         usuario = self.model(
@@ -20,14 +20,15 @@ class UsuarioManager(BaseUserManager):
         usuario.save()
         return usuario
 
-    def create_superuser(self,username,rut,correo,nombre_completo,telefono,password):
+    def create_superuser(self,username,rut,correo,nombre_completo,telefono,direccion,password):
         usuario = self.create_user(
             correo=correo,
             username = username,
             rut=rut,
             nombre_completo = nombre_completo, 
             telefono = telefono,
-            password=password
+            password=password,
+            direccion=direccion
         
         )
         usuario.usuario_administrador = True
@@ -41,13 +42,14 @@ class Usuario(AbstractBaseUser):
     nombre_completo = models.CharField('Nombre Completo',max_length=150)
     rut = models.IntegerField('Run', unique=True)
     telefono = models.IntegerField('Telefono', unique=True)
+    direccion = models.CharField('Dirección', max_length=300,default='',null=True)
     usuario_activo = models.BooleanField(default=True)
     usuario_administrador = models.BooleanField(default=False)
     cargo = models.ForeignKey(cargo, on_delete=models.CASCADE,default=1,null=True)
     objects = UsuarioManager()
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['correo','nombre_completo','rut','telefono']
+    REQUIRED_FIELDS = ['correo','nombre_completo','rut','telefono','direccion']
     def __str__(self):
         return f'{self.nombre_completo}'
     
