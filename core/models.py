@@ -61,14 +61,7 @@ class contacto(models.Model):
     def __str__(self):
         return self.nombre
 
-class factura(models.Model): 
-    fecha = models.DateField(default=datetime.today)
-    producto = models.ForeignKey(producto, on_delete=models.CASCADE)
-    canitdad_producto = models.IntegerField()
-    total = models.IntegerField()
 
-    def __str__(self):
-        return self.id
 
 class boleta(models.Model):
     fecha = models.DateField(default=datetime.today)

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'core',
     'carro',
     'usuario',
+    'factura',
     'colorfield',
     'django.contrib.humanize',
     'crispy_forms',

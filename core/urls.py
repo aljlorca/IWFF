@@ -29,6 +29,7 @@ urlpatterns = [
     path('tbkRes/', statusTrx, name="tbkRes"),
     #Carrito
     path('cart/', cart, name="cart"),
-
+    #Factura
+    path('factura/', factura , name='factura')
 
 ]

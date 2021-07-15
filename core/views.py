@@ -17,7 +17,7 @@ from .services import *
 from carro.context_processor import *
 import json
 from usuario.forms import FormularioUsuario
-
+from factura.forms import FacturaForm
 # Create your views here.
 #Home de la pagina
 def home(request):
@@ -252,3 +252,18 @@ def cart(request):
         'resultado': get_initTrxTBK(monto),
     }
     return render(request, 'core/carro/cart.html', data)    
+
+#Factura
+def factura(request):
+    data = {
+        'form':FacturaForm(),
+    }
+    if request.method == 'POST':
+        formulario = FacturaForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, " Factura Registrada correctamente ")
+        else:
+            data["form"] = formulario
+            messages.warning(request, "ERROR: El proveedor no fue registrado")
+    return render(request, 'core/factura/agregar.html',data)
