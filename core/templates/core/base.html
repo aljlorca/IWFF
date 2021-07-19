@@ -48,7 +48,7 @@
       </li>
       {% endif %}
 
-      {% if perms.core.add_producto %}
+      {% if user.cargo.id == 2 %}
 	    <li class="nav-item">
         <a class="nav-link" href="{% url 'agregar_producto' %}">Agregar Productos</a>
       </li>
