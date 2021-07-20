@@ -41,5 +41,9 @@ urlpatterns = [
     path('cart/', cart, name="cart"),
     #usuario
     path('usuario/<id>/', usuario , name='usuario'),
+    #Modulos
+    path('empleado/',empleado, name='empleado'),
+    path('administrador/',administrador, name='administrador'),
+    path('proveedor/',provedor, name='provedor')
 
 ]

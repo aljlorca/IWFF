@@ -359,3 +359,18 @@ def eliminar_boleta(request,id):
     fact.delete()
     messages,success(request, "Boleta eliminada correctamente")
     return redirect(to="listar_boleta")
+
+#Modulos 
+#Modulo proveedor
+def provedor(request):
+
+    return render(request, 'core/Modulos/proveedor.html')
+#Modulo Administrador
+def administrador(request):
+
+    return render(request,'core/Modulos/administrador.html')
+
+#Modulo Empleado
+def empleado(request):
+
+    return render(request,'core/Modulos/empleado.html')

@@ -42,19 +42,19 @@
       <li class="nav-item">
         <a class="nav-link" href="{% url 'contacto' %}">Contáctanos</a>
       </li>
-      {% if perms.core.view_producto %}
+      {% if user.cargo.id == 3 %}
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'listar_producto' %}">Área Empleados</a>
+        <a class="nav-link" href="empleado">Área Empleados</a>
+      </li>
+      {% endif %}
+      {% if user.cargo.id == 4 %}
+	    <li class="nav-item">
+        <a class="nav-link" href="provedor">Área Proveedores</a>
       </li>
       {% endif %}
       {% if user.cargo.id == 2 %}
-	    <li class="nav-item">
-        <a class="nav-link" href="{% url 'agregar_producto' %}">Área Proveedores</a>
-      </li>
-      {% endif %}
-      {% if perms.core.add_familia %}
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'nueva_familia' %}">Área  Administración</a>
+        <a class="nav-link" href="administrador">Área  Administración</a>
       </li>
       {% endif %}
       {% if user.is_staff %}
