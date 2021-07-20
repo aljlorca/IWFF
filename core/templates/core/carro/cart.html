@@ -56,6 +56,7 @@
             </tr>
         {% endif %}
         <form method="POST" enctype="multipart/form-data" action="{{resultado.url}}?token_ws={{resultado.token}}">
+            <input type="hidden" name="precio_total" value="{{importe_total_carro}}">
             <input type="hidden" name="token_ws" value="{{resultado.token}}" disabled>
             <input type="submit" onclick="{% url "carro:limpiar" %}"  value="Pagar" class="btn btn-success">      
         </form>

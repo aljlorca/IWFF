@@ -41,7 +41,7 @@
             <th>Nombre</th>
         </tr>
         {% for f in factura %}
-        {% if f.boleta == False %}
+        {% if f.boleta %}
         <tr>
             <td>{{ f.id }}</td>
             <td>{{ f.fecha }}</td>

@@ -20,6 +20,16 @@ urlpatterns = [
     path('nueva_familia/', nueva_familia, name='nueva_familia'),
     path('modificarfamilia/<id>/', modificar_familia, name="modificar_familia"),
     path('eliminarfamilia/<id>/', eliminar_familia, name="eliminar_familia"),
+    #Factura
+    path('listar_factura/', listar_factura,name='listar_factura'),
+    path('nueva_factura/', nueva_factura, name='nueva_factura'),
+    path('modificarfactura/<id>/', modificar_factura,name='modificar_factura'),
+    path('eliminarfactura/<id>/',eliminar_factura,name='eliminar_factura'),
+    #Boleta
+    path('listar_boleta/', listar_boleta,name='listar_boleta'),
+    path('nueva_boleta/', nueva_boleta, name='nueva_boleta'),
+    path('modificarboleta/<id>/', modificar_boleta,name='modificar_boleta'),
+    path('eliminarboleta/<id>/',eliminar_boleta,name='eliminar_boleta'),
     #Proveedor
     path('listar_proveedor/', listar_proveedor, name='listar_proveedor' ),
     path('nuevo_proveedor/', nuevo_proveedor, name='nuevo_proveedor'),
@@ -29,7 +39,7 @@ urlpatterns = [
     path('tbkRes/', statusTrx, name="tbkRes"),
     #Carrito
     path('cart/', cart, name="cart"),
-    #Factura
-    path('factura/', factura , name='factura')
+    #usuario
+    path('usuario/<id>/', usuario , name='usuario'),
 
 ]

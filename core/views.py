@@ -1,3 +1,5 @@
+from factura.models import factura
+from usuario.models import Usuario
 from django.forms.forms import Form
 import carro
 from django.contrib.messages.api import success
@@ -86,7 +88,7 @@ def modificar_producto(request, id):
             return redirect(to="listar_producto")
         else:
             data["form"] = formulario
-            
+            messages.warning(request, "ERROR: No se pudo modificar el producto")
     return render(request, 'core/producto/modificar.html', data)
 #Procedimiento para eliminar producto
 def eliminar_producto(request, id ):
@@ -220,7 +222,7 @@ def eliminar_proveedor(request, id ):
     return redirect(to="listar_proveedor")
 #Procedimiento modificar Proveedor 
 def modificar_proveedor(request, id):
-    prov = get_object_or_404(familia, id=id)
+    prov = get_object_or_404(proveedor, id=id)
     data = {
         'form': AgregarProveedorForms(instance=prov)
     }
@@ -246,7 +248,7 @@ def statusTrx(request):
 @csrf_exempt
 def cart(request):
     product = producto.objects.all()
-    monto = 123123
+    monto = request.POST.get('precio_total')
     data = {
         'producto': product,
         'resultado': get_initTrxTBK(monto),
@@ -254,7 +256,7 @@ def cart(request):
     return render(request, 'core/carro/cart.html', data)    
 
 #Factura
-def factura(request):
+def nueva_factura(request):
     data = {
         'form':FacturaForm(),
     }
@@ -265,5 +267,95 @@ def factura(request):
             messages.success(request, " Factura Registrada correctamente ")
         else:
             data["form"] = formulario
-            messages.warning(request, "ERROR: El proveedor no fue registrado")
+            messages.warning(request, "ERROR: la factura no fue registrada")
     return render(request, 'core/factura/agregar.html',data)
+
+def listar_factura(request):
+    factur = factura.objects.all()
+    data = {
+        'factura':factur
+    }
+    return render(request, 'core/factura/listar.html',data)
+
+def modificar_factura(request,id):
+    fact = get_object_or_404(factura, id=id)
+    data = {
+        'form': FacturaForm(instance=fact)
+    }
+    if request.method == 'POST':
+        formulario = FacturaForm(data=request.POST,instance=fact)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, " Factura modificada correctamente ")
+            return redirect(to="listar_factura")
+        else:
+            data["form"] = formulario
+            
+    return render(request, 'core/factura/modificar.html', data)
+
+def eliminar_factura(request,id):
+    fact = get_object_or_404(factura, id=id)
+    fact.delete()
+    messages,success(request, "Factura eliminada correctamente")
+    return redirect(to="listar_factura")
+
+#Usuario
+def usuario(request,id):
+    persona = get_object_or_404(Usuario, id=id)
+    data = {
+        'form':FormularioUsuario(instance=persona),
+    }
+    if request.method == 'POST':
+        formulario = FormularioUsuario(data=request.POST, instance=persona)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, " Datos modificados correctamente ")
+        else:
+            data["form"] = formulario
+            messages.warning(request, "ERROR: Los datos no fueron actualizados")
+
+    return render(request,'core/persona/modificar.html',data)
+
+#Boleta
+def nueva_boleta(request):
+    data = {
+        'form':FacturaForm(),
+    }
+    if request.method == 'POST':
+        formulario = FacturaForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, " Factura Registrada correctamente ")
+        else:
+            data["form"] = formulario
+            messages.warning(request, "ERROR: la factura no fue registrada")
+    return render(request, 'core/boleta/agregar.html',data)
+
+def listar_boleta(request):
+    factur = factura.objects.all()
+    data = {
+        'factura':factur
+    }
+    return render(request, 'core/boleta/listar.html',data)
+
+def modificar_boleta(request,id):
+    fact = get_object_or_404(factura, id=id)
+    data = {
+        'form': FacturaForm(instance=fact)
+    }
+    if request.method == 'POST':
+        formulario = FacturaForm(data=request.POST,instance=fact)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, " Boleta modificada correctamente ")
+            return redirect(to="listar_boleta")
+        else:
+            data["form"] = formulario
+            
+    return render(request, 'core/boleta/modificar.html', data)
+
+def eliminar_boleta(request,id):
+    fact = get_object_or_404(factura, id=id)
+    fact.delete()
+    messages,success(request, "Boleta eliminada correctamente")
+    return redirect(to="listar_boleta")
