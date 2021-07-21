@@ -18,7 +18,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .services import *
 from carro.context_processor import *
 import json
-from usuario.forms import FormularioUsuario
+from usuario.forms import FormularioUsuario, FormularioUsuarioCompleto
 from factura.forms import FacturaForm
 # Create your views here.
 #Home de la pagina
@@ -61,6 +61,7 @@ def agregar_producto(request):
 #Funcion listar prodcutos
 def listar_productos(request):
     data = {
+        'familias':listar_familia(),
         'producto':lista_prodcuto(),
     }
     return render(request, 'core/producto/listar.html',data)
@@ -316,6 +317,33 @@ def usuario(request,id):
 
     return render(request,'core/persona/modificar.html',data)
 
+def modificar_usuario(request,id):
+    persona = get_object_or_404(Usuario, id=id)
+    data = {
+        'form':FormularioUsuarioCompleto(instance=persona),
+    }
+    if request.method == 'POST':
+        formulario = FormularioUsuarioCompleto(data=request.POST, instance=persona)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, " Datos modificados correctamente ")
+        else:
+            data["form"] = formulario
+            messages.warning(request, "ERROR: Los datos no fueron actualizados")
+    return render(request, 'core/persona/modificar.html',data)
+
+def listar_usuario(request):
+    persona = Usuario.objects.all()
+    data = {
+        'usuario':persona,
+    }
+    return render(request, 'core/persona/listar.html',data)
+
+def eliminar_usuario(request,id):
+    usuari = get_object_or_404(Usuario, id=id)
+    usuari.delete()
+    messages,success(request, "Usuario eliminadao correctamente")
+    return redirect(to="listar_usuario")
 #Boleta
 def nueva_boleta(request):
     data = {

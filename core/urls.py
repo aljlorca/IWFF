@@ -41,6 +41,10 @@ urlpatterns = [
     path('cart/', cart, name="cart"),
     #usuario
     path('usuario/<id>/', usuario , name='usuario'),
+    path('listar_usuario/',listar_usuario , name='listar_usuario'),
+    path('modificar_usuario/<id>/',modificar_usuario,name='modificar_usuario'),
+    path('eliminarusuario/<id>/',eliminar_usuario, name='eliminar_usuario'),
+
     #Modulos
     path('empleado/',empleado, name='empleado'),
     path('administrador/',administrador, name='administrador'),

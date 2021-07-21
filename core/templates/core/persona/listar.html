@@ -3,7 +3,7 @@
 {% block scripts %}
 
 <script>
-    function eliminar_producto(id){
+    function eliminar_usuario(id){
         Swal.fire({
             "title":'¿Desea eliminar el producto seleccionado?',
             "text": 'una vez eliminado no se puede deshacer el cambio',
@@ -18,7 +18,7 @@
         .then(function(result){
             
             if(result.isConfirmed){
-                window.location.href= "/eliminarproducto/"+id+"/"
+                window.location.href= "/eliminarusuario/"+id+"/"
             }
 
 
@@ -47,38 +47,39 @@
                 <table class="table table-stripped table-hover table-responsive-sm clearfix">
                     <thead class="thead-dark">
                         <tr>
-                            <th>N producto</th>
-                            <th>Nombre</th>
-                            <th>Precio</th>
-                            <th>Vencimiento</th>
-                            <th>Stock</th>
-                            <th>Familia</th>
-                            <th>Destacado</th>
-                            <th>Opciones</th>
+                            <th>id</th>
+                            <th>username</th>
+                            <th>correo</th>
+                            <th>nombre completo</th>
+                            <th>rut</th>
+                            <th>cargo</th>
+                            <th>telefono</th>
+                            <th>dirección</th>
+                            <th>usuario administrador</th>
+
                     
                         </tr>
+                        {% for u in usuario %}
                         <tr>
-                        {% for p in producto %}
-                            <td>{{ p.0 }}</td>
-                            <td>{{ p.1 | title }}</td>
-                            <td>{{ p.3 | intcomma }}</td>
-                            <td>{{ p.4 | date}}</td>
-                            <td>{{ p.5 }}</td>
-                            {% for f in familias %}
-                            <td>
-                                <div value="{{ f.0 }}">{{ f.1 }}</div>
-                            </td>
-                            {% endfor %}
-                            {% if p.8 %}
+                            <td>{{ u.id }}</td>
+                            <td>{{ u.username | title }}</td>
+                            <td>{{ u.correo }}</td>
+                            <td>{{ u.nombre_completo | title }}</td>
+                            <td>{{ u.rut }}</td>
+                            <td>{{ u.cargo }}</td>
+                            <td>{{ u.telefono }}</td>
+                            <td>{{ u.direccion }}</td>
+                            {% if u.usuario_administrador %}
                             <td>Si</td>
                             {% else %}
                             <td>No</td>
                             {% endif %}
                             <td>
-                                <a href="{% url 'modificar_producto' p.0 %}" class="btn btn-info">Modificar</a>
-                                <a href="#" onclick="eliminar_producto({{ p.0 }})" class="btn btn-danger">Eliminar</a>
+                                <a href="{% url 'modificar_usuario' user.id %}" class="btn btn-info">Modificar</a>
                             </td>
-
+                            <td>
+                                <a href="#" onclick="eliminar_usuario({{ user.id }})" class="btn btn-danger">Eliminar</a>
+                            </td>
                         {% endfor %}
                     </tbody>
 

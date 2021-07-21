@@ -3,6 +3,7 @@ from core.models import producto
 from usuario.models import Usuario
 from datetime import datetime
 # Create your models here.
+
 class factura(models.Model): 
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     fecha = models.DateField(default=datetime.now)
@@ -12,7 +13,7 @@ class factura(models.Model):
     boleta = models.BooleanField(default=False)
 #tipo especifica si es boleta o factura (false = boleta)
     def __str__(self):
-        return str(self.usuario)
+        return str(self.id)
 
     class Meta:
         verbose_name = 'Venta'
