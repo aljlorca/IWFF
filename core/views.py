@@ -156,7 +156,7 @@ def agregar_familia(nombre):
 def eliminar_familia(request, id ):
     fam = get_object_or_404(familia, id=id)
     fam.delete()
-    messages,success(request, "familia eliminado correctamente")
+    messages,success(request, "Familia eliminada correctamente")
     return redirect(to="listar_familias")
 #Procedimiento para modificar familia
 def modificar_familia(request, id):
@@ -231,7 +231,7 @@ def modificar_proveedor(request, id):
         formulario = AgregarProveedorForms(data=request.POST,instance=prov)
         if formulario.is_valid():
             formulario.save()
-            messages.success(request, " Proveedor modificada correctamente ")
+            messages.success(request, " Proveedor modificado correctamente ")
             return redirect(to="listar_proveedor")
         else:
             data["form"] = formulario
@@ -353,10 +353,10 @@ def nueva_boleta(request):
         formulario = FacturaForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
-            messages.success(request, " Factura Registrada correctamente ")
+            messages.success(request, " Boleta Registrada correctamente ")
         else:
             data["form"] = formulario
-            messages.warning(request, "ERROR: la factura no fue registrada")
+            messages.warning(request, "ERROR: la boleta no fue registrada")
     return render(request, 'core/boleta/agregar.html',data)
 
 def listar_boleta(request):

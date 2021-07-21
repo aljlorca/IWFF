@@ -33,10 +33,9 @@
           Categorias
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">cat1</a>
-          <a class="dropdown-item" href="#">cat2</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">puedesercat3</a>
+          {% for f in familia %}
+          <a class="dropdown-item" href="#">{{ f.1 }}</a>
+          {% endfor %}
         </div>
       </li>
       <li class="nav-item">
@@ -44,22 +43,17 @@
       </li>
       {% if user.cargo.id == 3 %}
       <li class="nav-item">
-        <a class="nav-link" href="empleado">Área Empleados</a>
+        <a class="nav-link" href="{% url 'empleado' %}">Área Empleados</a>
       </li>
       {% endif %}
       {% if user.cargo.id == 4 %}
 	    <li class="nav-item">
-        <a class="nav-link" href="provedor">Área Proveedores</a>
+        <a class="nav-link" href="{% url 'provedor' %}">Área Proveedores</a>
       </li>
       {% endif %}
       {% if user.cargo.id == 2 %}
       <li class="nav-item">
-        <a class="nav-link" href="administrador">Área  Administración</a>
-      </li>
-      {% endif %}
-      {% if user.is_staff %}
-      <li class="nav-item">
-        <a class="nav-link" href="admin">Administración Avanzada</a>
+        <a class="nav-link" href="{% url 'administrador' %}">Área  Administración</a>
       </li>
       {% endif %}
       {% if user.is_authenticated %}

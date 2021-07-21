@@ -31,32 +31,42 @@
 
 {% block contenido %}
 
+<div class="col-12 col-md-6 offset-md-3 ">
+    <div class="row p-3 mb-2">
+    
+        <div class="card">
+                <div class="card-body"> 
+                <h1>Listado de Familias</h1>
+                <table class="table table-stripped table-hover table-responsive-sm clearfix">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID familia</th>
+                            <th>Nombre</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        {% for f in familia %}
+                        
+                        <tr>
+                            <td>{{ f.0 }}</td>
+                            <td>{{ f.1 }}</td>
+                        
+                        <td>
+                            <a href="{% url 'modificar_familia' f.0 %}" class="btn btn-info">Modificar</a>
+                        </td>
+                        <td>
+                            <a href="#" onclick="eliminar_familia({{ f.0 }})" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                        {% endfor %}
+                    </tbody>
 
-<div>
-    <h1>Listado de familias</h1>
+                </table>
+                <hr>
+            </div>
+        </div>
 
-    <table> 
-        <tr>
-            <th>ID familia</th>
-            <th>Nombre</th>
-        </tr>
-        {% for f in familia %}
-        
-        <tr>
-            <td>{{ f.0 }}</td>
-            <td>{{ f.1 }}</td>
-        </tr>
-        <td>
-            <a href="{% url 'modificar_familia' f.0 %}" class="btn btn-info">Modificar</a>
-        </td>
-        <td>
-            <a href="#" onclick="eliminar_familia({{ f.0 }})" class="btn btn-danger">Eliminar</a>
-        </td>
-        {% endfor %}
-
-    </table>
+    </div>
 </div>
-
-
 
 {% endblock %}

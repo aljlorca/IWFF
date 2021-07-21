@@ -3,8 +3,8 @@
 {% load static %}
 
 {% block head %}
-<link href="{% static 'lib/select2-4.0.13/css/select2.min.css' %}" rel="stylesheet"/>
-<link href="{% static 'lib/select2-4.0.13/css/select2-bootstrap4.min.css' %}" rel="stylesheet"/>
+<link href="{% static 'lib/select2-4.0.13/css/select2.min.css' %}" rel="stylesheet" />
+<link href="{% static 'lib/select2-4.0.13/css/select2-bootstrap4.min.css' %}" rel="stylesheet" />
 <script src="{% static 'lib/select2-4.0.13/js/select2.min.js' %}"></script>
 <script src="{% static 'lib/select2-4.0.13/js/i18n/es.js' %}"></script>
 <script src="{% static 'sale/js/form.js' %}"></script>
@@ -14,33 +14,31 @@
 
 {% block contenido %}
 
-<div class="card card-primary">
-            <div class="col-lg-4">
-                <div class="card card-secondary">
-                    <div class="card-header">
-                        <h3 class="card-title"><i class="fas fa-shopping-cart"></i> Datos de la factura</h3>
-                    </div>
-                    <div class="card-body">
-                        <form action="" method="post" enctype="multipart/form-data">
+<div class="col-12 col-md-6 offset-md-3 ">
+    <div class=" row p-3 mb-2 ">
+        <div class="card">
+            <div class="card-body">
+                <h1>Datos de la factura</h1>
+                <form action="" method="post" enctype="multipart/form-data">
 
-                            {% csrf_token %}
-                            {{form | crispy}}
-        
-                            <br>
-                                <div class="d-flex justify-content-end">
-                                    <input type="reset" value="Cancelar" id="btnCancelar" class="btn btn-secondary">
-                                    &nbsp;
-                                    <button type="submit" id="btnGuardar" class="btn btn-primary">Guardar</button>
-                            
-                                </div>
-        
-        
-                        </form>
+                    {% csrf_token %}
+                    {{form | crispy}}
+
+                    <br>
+                    <div class="d-flex justify-content-end">
+                        <input type="reset" value="Cancelar" id="btnCancelar" class="btn btn-secondary">
+                        &nbsp;
+                        <button type="submit" id="btnGuardar" class="btn btn-primary">Guardar</button>
+
                     </div>
-                </div>
+
+
+                </form>
+                {{mensaje}}
             </div>
         </div>
     </div>
+</div>
 
 
 
