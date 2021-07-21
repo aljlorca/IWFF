@@ -40,25 +40,23 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>N° Boleta</th>
-            <th>Fecha</th>
-            <th>Total</th>
-            <th>Opciones</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                            <th>Opciones</th>
                         </tr>
-                        {% for f in factura %}
-                        {% if f.boleta %}
+                        {% for b in boleta %}
                         
                         <tr>
-                            <td>{{ f.id }}</td>
-                            <td>{{ f.fecha }}</td>
-                            <td>{{ f.total }}</td>
+                            <td>{{ b.id }}</td>
+                            <td>{{ b.fecha | date }}</td>
+                            <td>{{ b.total }}</td>
                 
                         
                         <td>
-                            <a href="{% url 'modificar_factura' f.id %}" class="btn btn-info">Modificar</a>
-                            <a href="#" onclick="eliminar_factura({{ f.id }})" class="btn btn-danger">Eliminar</a>
+                            <a href="{% url 'modificar_boleta' b.id %}" class="btn btn-info">Modificar</a>
+                            <a href="#" onclick="eliminar_boleta({{ b.id }})" class="btn btn-danger">Eliminar</a>
                         </td>
                     </tr>
-                    {% endif %}
                     {% endfor %}
                     </tbody>
 
