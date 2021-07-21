@@ -70,11 +70,9 @@ body{
 }
 
 .quantity{
-	display: inline-block;
 	font-weight: 700;
-	padding-right:10px;
-	
-
+	margin-right: 10px;
+	margin-left:10px;
 }
 
 .chg-quantity{
