@@ -6,7 +6,7 @@ from django.db.models import fields
 from django.forms import widgets    
 from .models import *
 from django.contrib.auth.models import User
-
+from django.forms.widgets import Select
 class ContactoForms(forms.ModelForm):
     
     class Meta:
@@ -39,3 +39,32 @@ class AgregarProveedorForms(forms.ModelForm):
     class Meta:
         model = proveedor
         fields = '__all__'
+
+
+class AgregarOrdenForms(forms.ModelForm):
+    
+    class Meta:
+        model = ordencompra
+        fields = '__all__'
+class ModificarOrdenForms(forms.ModelForm):
+
+    class Meta:
+        model = ordencompra
+        fields = ('proveedor','documento','estado')
+        widgets = {
+            'proveedor':Select(attrs={
+                'class':'form-control select2',
+                'style':'width: 100%',
+                'type':'disabled'
+
+            }),
+            'documento':Select(attrs={
+                'class':'form-control select2',
+                'style':'width: 100%',
+                'type':'disabled'
+            }),
+            'estado': Select(attrs={
+                'class':'form-control select2',
+                'style':'width: 100%',
+            })
+        }
