@@ -329,7 +329,7 @@ def nuevo_usuario(request):
         else:
             data["form"] = formulario
             messages.warning(request, "ERROR: el usuario no fue registrado")
-    return render(request, 'core/factura/agregar.html',data)
+    return render(request, 'core/persona/agregar.html',data)
     
 def modificar_usuario(request,id):
     persona = get_object_or_404(Usuario, id=id)
