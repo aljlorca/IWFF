@@ -66,9 +66,11 @@
                             <td>{{ p.4 | date}}</td>
                             <td>{{ p.5 }}</td>
                             {% for f in familias %}
+                            {% if p.9 == f.0 %}
                             <td>
                                 <div value="{{ f.0 }}">{{ f.1 }}</div>
                             </td>
+                            {% endif %}
                             {% endfor %}
                             {% if p.8 %}
                             <td>Si</td>

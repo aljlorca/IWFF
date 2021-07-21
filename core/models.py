@@ -72,3 +72,17 @@ class boleta(models.Model):
 
     def __str__(self):
         return self.id
+
+opciones_estados = [
+    [0, 'Pendiente'],
+    [1,'Aprobada'],
+    [2,'Rechazada'],
+]
+
+class ordencompra(models.Model):
+    proveedor = models.ForeignKey(proveedor,on_delete=models.CASCADE)
+    documento = models.FileField(null=True,blank=True)
+    estado = models.BigIntegerField(choices=opciones_estados, null=True, default=0)
+
+    def __str__(self):
+        return self.id

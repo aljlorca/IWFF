@@ -404,6 +404,49 @@ def eliminar_boleta(request,id):
     messages,success(request, "Boleta eliminada correctamente")
     return redirect(to="listar_boleta")
 
+#Orden Compra
+def nueva_orden(request):
+    data = {
+        'form':AgregarOrdenForms(),
+    }
+    if request.method == 'POST':
+        formulario = AgregarOrdenForms(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, " Orden Registrada correctamente ")
+        else:
+            data["form"] = formulario
+            messages.warning(request, "ERROR: la Orden no fue registrada")
+    return render(request, 'core/ordencompra/agregar.html',data)
+
+def listar_orden(request):
+    orden = ordencompra.objects.all()
+    data = {
+        'orden':orden
+    }
+    return render(request,'core/ordencompra/listar.html',data)
+
+def modificar_orden(request,id):
+    orden = get_object_or_404(ordencompra, id=id)
+    data = {
+        'form': ModificarOrdenForms(instance=orden)
+    }
+    if request.method == 'POST':
+        formulario = ModificarOrdenForms(data=request.POST,instance=orden)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, " Orden modificada correctamente ")
+            return redirect(to="listar_orden")
+        else:
+            data["form"] = formulario
+            
+    return render(request, 'core/ordencompra/modificar.html', data)
+
+def eliminar_orden(request,id):
+    orden = get_object_or_404(ordencompra,id=id)
+    orden.delete()
+    return redirect(to='listar_orden')
+
 #Modulos 
 #Modulo proveedor
 def provedor(request):

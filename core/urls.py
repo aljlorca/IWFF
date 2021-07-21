@@ -5,6 +5,7 @@ from .views import *
 from django.contrib import admin
 
 urlpatterns = [
+    #Home
     path('',home, name='home'), 
     #contacto
     path('contacto/', contacto, name="contacto"),
@@ -45,10 +46,14 @@ urlpatterns = [
     path('listar_usuario/',listar_usuario , name='listar_usuario'),
     path('modificar_usuario/<id>/',modificar_usuario,name='modificar_usuario'),
     path('eliminarusuario/<id>/',eliminar_usuario, name='eliminar_usuario'),
-
     #Modulos
     path('empleado/',empleado, name='empleado'),
     path('administrador/',administrador, name='administrador'),
-    path('proveedor/',provedor, name='provedor')
+    path('proveedor/',provedor, name='provedor'),
+    #OrdenCompra
+    path('listar_orden/', listar_orden, name='listar_orden' ),
+    path('nueva_orden/', nueva_orden, name='nueva_orden'),
+    path('modificarorden/<id>/', modificar_orden, name="modificar_orden"),
+    path('eliminarorden/<id>/', eliminar_orden, name="eliminar_orden"),
 
 ]
