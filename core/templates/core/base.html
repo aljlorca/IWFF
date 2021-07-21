@@ -73,9 +73,10 @@
       {% endif %}
     </ul>
         <a class="nav-link" href="{% url 'cart' %}">
-          <img id="cart-icon" src="{% static 'images/cart.png' %}" alt="carrito"/>
+          <img id="cart-icon" style="width:30px;" src="{% static 'images/cart.png' %}" alt="carrito"/>
+          <p id="cart-total" class="float-right">{{importe_cant_carro}}</p>
         </a>
-        <p id="cart-total">{{importe_cant_carro}}</p>
+        
   </div>
 </nav>
 </header>
