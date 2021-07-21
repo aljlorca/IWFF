@@ -50,10 +50,16 @@
         {% for p in producto %}
           {% if p.oferta == 1 %}
           <div class="col-md-4 pb-1 pb-md-0">
-            <div class="card">
+            <div class="card" style="background-color: #DADADA;">
+              {% if p.imagen %}
               <div>
                 <img src="{{ p.imagen.url }}" class="card-img-top" alt="imagen">
               </div>
+              {% else %}
+              <div>
+                <img src="{% static '/images/default.jpg' %}" class="card-img-top" alt="imagen">
+              </div>
+              {% endif %}
               <div class="card-body">
                 <h5 class="card-title">{{ p.nombre }}</h5>
                 <p class="card-text">{{ p.descripcion }}</p>

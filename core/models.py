@@ -31,11 +31,12 @@ class producto(models.Model):
     stock = models.IntegerField()
     stock_critico = models.IntegerField()
     proveedor = models.ForeignKey(proveedor, on_delete=models.PROTECT)
-    imagen = models.ImageField(upload_to='productos', null=True)
+    imagen = models.ImageField(upload_to='productos', null=True, blank=True)
     oferta = models.BooleanField(default='0', null=False)
 
     def __str__(self):
         return self.nombre
+
 
 class cargo(models.Model):
     nombre = models.CharField(max_length=20)
