@@ -31,7 +31,7 @@ class producto(models.Model):
     stock = models.IntegerField()
     stock_critico = models.IntegerField()
     proveedor = models.ForeignKey(proveedor, on_delete=models.PROTECT)
-    imagen = models.ImageField(upload_to='productos', null=True, blank=True)
+    imagen = models.ImageField(upload_to='productos', null=True)
     oferta = models.BooleanField(default='0', null=False)
 
     def __str__(self):
