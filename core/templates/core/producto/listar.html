@@ -57,8 +57,9 @@
                             <th>Opciones</th>
                     
                         </tr>
-                        <tr>
                         {% for p in producto %}
+                        <tr>
+                        
                             <td>{{ p.0 }}</td>
                             <td>{{ p.1 | title }}</td>
                             <td>{{ p.3 | intcomma }}</td>
@@ -79,8 +80,9 @@
                                 <a href="#" onclick="eliminar_producto({{ p.0 }})" class="btn btn-danger">Eliminar</a>
                             </td>
  
-                        {% endfor %}
+                        
                     </tbody>
+                    {% endfor %}
 
                 </table>
                 <hr>
