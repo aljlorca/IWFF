@@ -4,7 +4,7 @@ from usuario.models import Usuario
 from datetime import datetime
 # Create your models here.
 
-class factura(models.Model): 
+class boleta(models.Model): 
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     fecha = models.DateField(default=datetime.now)
     iva = models.IntegerField(default=19)

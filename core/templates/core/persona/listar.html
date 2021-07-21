@@ -43,11 +43,7 @@
 <div class="col-12 col-md-6 offset-md-3 ">
     <div class="row p-3 mb-2">
         <div class="card">
-<<<<<<< HEAD
             <div class="card-body" style="background-color: white;">
-=======
-                <div class="card-body"> 
->>>>>>> d6b9e03b837221be13d4cb866ac514faa72f1821
                 <h1>Listado de Usuarios</h1>
                 <table class="table table-stripped table-hover table-responsive-sm clearfix">
                     <thead class="thead-dark">
@@ -74,10 +70,10 @@
                             <td>{{ u.telefono }}</td>
                             <td>{{ u.direccion }}</td>
                             <td>
-                                <a href="{% url 'modificar_usuario' user.id %}" class="btn btn-info">Modificar</a>
+                                <a href="{% url 'modificar_usuario' u.id %}" class="btn btn-info">Modificar</a>
                             </td>
                             <td>
-                                <a href="#" onclick="eliminar_usuario({{ user.id }})"
+                                <a href="#" onclick="eliminar_usuario({{ u.id }})"
                                     class="btn btn-danger">Eliminar</a>
                             </td>
                         </tr>
