@@ -55,5 +55,4 @@ urlpatterns = [
     path('nueva_orden/', nueva_orden, name='nueva_orden'),
     path('modificarorden/<id>/', modificar_orden, name="modificar_orden"),
     path('eliminarorden/<id>/', eliminar_orden, name="eliminar_orden"),
-
 ]
