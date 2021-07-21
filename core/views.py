@@ -18,7 +18,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .services import *
 from carro.context_processor import *
 import json
-from usuario.forms import FormularioUsuario, FormularioUsuarioCompleto
+from usuario.forms import FormularioUsuario, FormularioUsuarioCompleto,AgregadoAdminForms
 from factura.forms import FacturaForm
 from boleta.forms import BoletaForm
 from boleta.models import boleta
@@ -321,10 +321,10 @@ def usuario(request,id):
 
 def nuevo_usuario(request):
     data = {
-        'form':FormularioUsuarioCompleto(),
+        'form':AgregadoAdminForms(),
     }
     if request.method == 'POST':
-        formulario = FormularioUsuarioCompleto(data=request.POST)
+        formulario = AgregadoAdminForms(data=request.POST)
         if formulario.is_valid():
             formulario.save()
             messages.success(request, " Usuario Registrado correctamente ")
