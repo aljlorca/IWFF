@@ -80,7 +80,7 @@
           
         </li>
       </ul>
-      <a class="nav-link" href="{% url 'cart' %}">
+      <a class="nav-link d-flex align-items-center" href="{% url 'cart' %}">
         <img id="cart-icon" style="width:20px;" src="{% static 'images/cart.png' %}" alt="carrito" />
         <p id="cart-total" class="float-right">{{importe_cant_carro}}</p>
       </a>
@@ -89,7 +89,7 @@
   </nav>
 </header>
 
-<body background="/media/admin-interface/logo/fondo.jpg">
+<body background="/media/admin-interface/logo/fondo.jpg" style="background-repeat: no-repeat; background-size: cover;">
   <div class="cuerpo">
     {% block contenido %}
     {% endblock %}
