@@ -53,7 +53,9 @@
                             <td>{{ o.estado }}</td>
                             <td>
                                 <a href="{% url 'modificar_orden' o.id %}" class="btn btn-info">Modificar</a>
+                                {% if user.cargo.id == 2 %}
                                 <a href="#" onclick="eliminar_orden({{ o.id }})" class="btn btn-danger">Eliminar</a>
+                                {% endif %}
                             </td>
                     </tr>
                     {% endfor %}
