@@ -317,6 +317,20 @@ def usuario(request,id):
 
     return render(request,'core/persona/modificar.html',data)
 
+def nuevo_usuario(request):
+    data = {
+        'form':FormularioUsuarioCompleto(),
+    }
+    if request.method == 'POST':
+        formulario = FormularioUsuarioCompleto(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, " Usuario Registrado correctamente ")
+        else:
+            data["form"] = formulario
+            messages.warning(request, "ERROR: el usuario no fue registrado")
+    return render(request, 'core/factura/agregar.html',data)
+    
 def modificar_usuario(request,id):
     persona = get_object_or_404(Usuario, id=id)
     data = {
