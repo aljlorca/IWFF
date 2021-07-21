@@ -218,6 +218,7 @@ label {
 .card {
     align-items: center;
     width: 100%;
+    margin-bottom: 15px;
 }
 .card-title {
     font-weight: bolder;
@@ -225,4 +226,7 @@ label {
 }
 .card-text {
     font-weight: bold;
+}
+div.col-md-4.pb-1.pb-md-0{
+    margin-bottom: 15px;
 }
