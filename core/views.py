@@ -20,6 +20,8 @@ from carro.context_processor import *
 import json
 from usuario.forms import FormularioUsuario, FormularioUsuarioCompleto
 from factura.forms import FacturaForm
+from boleta.forms import BoletaForm
+from boleta.models import boleta
 # Create your views here.
 #Home de la pagina
 def home(request):
@@ -361,10 +363,10 @@ def eliminar_usuario(request,id):
 #Boleta
 def nueva_boleta(request):
     data = {
-        'form':FacturaForm(),
+        'form':BoletaForm(),
     }
     if request.method == 'POST':
-        formulario = FacturaForm(data=request.POST)
+        formulario = BoletaForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
             messages.success(request, " Boleta Registrada correctamente ")
@@ -374,19 +376,19 @@ def nueva_boleta(request):
     return render(request, 'core/boleta/agregar.html',data)
 
 def listar_boleta(request):
-    factur = factura.objects.all()
+    bolet = boleta.objects.all()
     data = {
-        'factura':factur
+        'boleta':bolet
     }
     return render(request, 'core/boleta/listar.html',data)
 
 def modificar_boleta(request,id):
-    fact = get_object_or_404(factura, id=id)
+    fact = get_object_or_404(boleta, id=id)
     data = {
-        'form': FacturaForm(instance=fact)
+        'form': BoletaForm(instance=fact)
     }
     if request.method == 'POST':
-        formulario = FacturaForm(data=request.POST,instance=fact)
+        formulario = BoletaForm(data=request.POST,instance=fact)
         if formulario.is_valid():
             formulario.save()
             messages.success(request, " Boleta modificada correctamente ")
@@ -397,7 +399,7 @@ def modificar_boleta(request,id):
     return render(request, 'core/boleta/modificar.html', data)
 
 def eliminar_boleta(request,id):
-    fact = get_object_or_404(factura, id=id)
+    fact = get_object_or_404(boleta, id=id)
     fact.delete()
     messages,success(request, "Boleta eliminada correctamente")
     return redirect(to="listar_boleta")

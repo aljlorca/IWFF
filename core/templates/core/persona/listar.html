@@ -70,10 +70,10 @@
                             <td>{{ u.telefono }}</td>
                             <td>{{ u.direccion }}</td>
                             <td>
-                                <a href="{% url 'modificar_usuario' user.id %}" class="btn btn-info">Modificar</a>
+                                <a href="{% url 'modificar_usuario' u.id %}" class="btn btn-info">Modificar</a>
                             </td>
                             <td>
-                                <a href="#" onclick="eliminar_usuario({{ user.id }})"
+                                <a href="#" onclick="eliminar_usuario({{ u.id }})"
                                     class="btn btn-danger">Eliminar</a>
                             </td>
                         </tr>

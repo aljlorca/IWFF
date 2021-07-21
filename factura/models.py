@@ -7,10 +7,8 @@ from datetime import datetime
 class factura(models.Model): 
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     fecha = models.DateField(default=datetime.now)
-    subtotal = models.IntegerField(default=0)
     iva = models.IntegerField(default=19)
     total = models.IntegerField()
-    boleta = models.BooleanField(default=False)
 #tipo especifica si es boleta o factura (false = boleta)
     def __str__(self):
         return str(self.id)
