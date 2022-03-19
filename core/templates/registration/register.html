@@ -11,15 +11,12 @@
                 <div class="card">
                     <div class="card-body">
                         
-                        <h2>Registro de datos</h2>
-                        <h5>Recuerde que los envios son solo dentro de la comuna</h3>
+                        <h2>Crea tu cuenta</h2>
                         <hr>
                         <form action="" method="post">
 
                             {% csrf_token %}
                             {{form | crispy}}
-                            <a class="btn btn-primary" href="{% url 'home' %}">Inicio</a>   |
-                            <a class="btn btn-primary" href="{% url 'login' %}">Iniciar Session</a>
                             <input class="btn btn-success float-right" type="submit" value="Registrar">
 
                         </form>

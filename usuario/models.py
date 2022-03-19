@@ -1,8 +1,7 @@
-from core.models import cargo
+from cargo.models import cargo
 from django.db import models
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.db.models.query import prefetch_related_objects
-from core.models import cargo
 # Create your models here.
 class UsuarioManager(BaseUserManager):
     def create_user(self,username,correo,nombre_completo,rut,telefono, direccion,password=None):

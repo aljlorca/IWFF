@@ -470,10 +470,10 @@ REM INSERTING into C##FERME.CORE_BOLETA
 SET DEFINE OFF;
 REM INSERTING into C##FERME.CORE_CARGO
 SET DEFINE OFF;
-Insert into C##FERME.CORE_CARGO (ID,NOMBRE) values (1,'Cliente');
-Insert into C##FERME.CORE_CARGO (ID,NOMBRE) values (3,'Empleado');
-Insert into C##FERME.CORE_CARGO (ID,NOMBRE) values (4,'Proveedor');
-Insert into C##FERME.CORE_CARGO (ID,NOMBRE) values (2,'Admin');
+Insert into C##FERME.CARGO_CARGO (ID,NOMBRE) values (1,'Cliente');
+Insert into C##FERME.CARGO_CARGO (ID,NOMBRE) values (3,'Empleado');
+Insert into C##FERME.CARGO_CARGO (ID,NOMBRE) values (4,'Proveedor');
+Insert into C##FERME.CARGO_CARGO (ID,NOMBRE) values (2,'Admin');
 REM INSERTING into C##FERME.CORE_CONTACTO
 SET DEFINE OFF;
 REM INSERTING into C##FERME.CORE_FAMILIA
