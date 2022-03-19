@@ -1,8 +1,8 @@
-django == 3.2.3
-cx_oracle == 8.2.0
-pillow == 8.2.0
-django-admin-interface == 0.16.3
-django-crispy-forms == 1.11.2
+django
+cx_oracle
+pillow
+django-admin-interface 
+django-crispy-forms
 django-rest-framework
 django-pwa 
 
