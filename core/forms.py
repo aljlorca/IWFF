@@ -7,6 +7,8 @@ from django.forms import widgets
 from .models import *
 from django.contrib.auth.models import User
 from django.forms.widgets import Select
+
+
 class ContactoForms(forms.ModelForm):
     
     class Meta:
@@ -35,10 +37,6 @@ class AgregarFamiliaForms(forms.ModelForm):
 
 
 
-class AgregarProveedorForms(forms.ModelForm):
-    class Meta:
-        model = proveedor
-        fields = '__all__'
 
 
 class AgregarOrdenForms(forms.ModelForm):

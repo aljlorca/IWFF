@@ -22,6 +22,9 @@ from usuario.forms import FormularioUsuario, FormularioUsuarioCompleto,AgregadoA
 from factura.forms import FacturaForm
 from boleta.forms import BoletaForm
 from boleta.models import boleta
+from proveedor.models import proveedor
+from proveedor.forms import AgregarProveedorForms
+
 # Create your views here.
 #Home de la pagina
 def home(request):
@@ -181,8 +184,9 @@ def modificar_familia(request, id):
 #Proveedores 
 #Funcion de listado de proveedores
 def listar_proveedor (request):
+    prov = proveedor.objects.all()
     data = {
-        'proveedor':listar_proveedores()
+        'proveedor':prov
     }
     return render(request,'core/proveedor/listar.html',data)
 #Funcion de almacenado de proveedor
@@ -200,30 +204,13 @@ def nuevo_proveedor(request):
             messages.warning(request, "ERROR: El proveedor no fue registrado")
 
     return render(request, 'core/proveedor/agregar.html', data)
-#Procedimiento de listado de proveedores
-def listar_proveedores():
-    django_cursor = connection.cursor()
-    cursor = django_cursor.connection.cursor()
-    out_cur = django_cursor.connection.cursor()
-    cursor.callproc('core_proveedor_listar', [out_cur])
-    lista = []
-    for fila in out_cur:
-        lista.append(fila)
-    return lista
-#Procedimiento para guardar proveedores
-def agregar_proveedor(rut,nombre,telefono,rubro):
-    django_cursor = connection.cursor()
-    cursor = django_cursor.connection.cursor()
-    salida = cursor.var(cx_Oracle.NUMBER)
-    cursor.callproc('core_proveedor_agregar',[rut,nombre,telefono,rubro,salida])
-    return salida.getvalue()
 #Procedimiento para eliminar proveedor
 def eliminar_proveedor(request, id ):
     prov = get_object_or_404(proveedor, id=id)
     prov.delete()
     messages,success(request, "Proveedor eliminado correctamente")
     return redirect(to="listar_proveedor")
-#Procedimiento modificar Proveedor 
+#Modificar Proveedor 
 def modificar_proveedor(request, id):
     prov = get_object_or_404(proveedor, id=id)
     data = {
@@ -241,13 +228,16 @@ def modificar_proveedor(request, id):
     return render(request, 'core/proveedor/modificar.html', data)
 
 #TBK
+
 @csrf_exempt
 def statusTrx(request):
     data = {
         'resultado': get_statusTBK(request),
     }
     return render(request, 'core/tbk/statusTbk.html',data)
+
 #Carrito
+
 @csrf_exempt
 def cart(request):
     product = producto.objects.all()
@@ -303,6 +293,7 @@ def eliminar_factura(request,id):
     return redirect(to="listar_factura")
 
 #Usuario
+
 def usuario(request,id):
     persona = get_object_or_404(Usuario, id=id)
     data = {
@@ -360,7 +351,9 @@ def eliminar_usuario(request,id):
     usuari.delete()
     messages,success(request, "Usuario eliminadao correctamente")
     return redirect(to="listar_usuario")
+
 #Boleta
+
 def nueva_boleta(request):
     data = {
         'form':BoletaForm(),
@@ -456,7 +449,6 @@ def provedor(request):
 def administrador(request):
 
     return render(request,'core/Modulos/administrador.html')
-
 #Modulo Empleado
 def empleado(request):
 

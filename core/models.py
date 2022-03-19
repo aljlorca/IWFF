@@ -3,7 +3,7 @@ from django.db.models.base import ModelState
 from django.db.models.expressions import Case
 from django.db.models.fields import BooleanField, CharField, NullBooleanField
 from datetime import date,datetime
-
+from proveedor.models import proveedor
 
 #Create your models here
 class familia(models.Model):
@@ -12,14 +12,6 @@ class familia(models.Model):
     def __str__(self):
         return self.nombre
 
-class proveedor(models.Model):
-    rut = models.IntegerField()
-    nombre = models.TextField()
-    telefono = models.IntegerField()
-    rubro = models.TextField()
-
-    def __str__(self):
-        return self.nombre      
 
 class producto(models.Model):
     id = models.CharField(max_length=17, primary_key=True)
