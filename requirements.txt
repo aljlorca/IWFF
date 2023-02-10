@@ -1,9 +1,11 @@
 django
-cx_oracle
+#cx_oracle not used in new versions
 pillow
 django-admin-interface 
 django-crispy-forms
+crispy-bootstrap5
 django-rest-framework
 django-pwa 
+requests
 
 ## para importar la base de datos debes usar el comando python manage.py import

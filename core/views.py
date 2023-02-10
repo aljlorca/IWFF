@@ -1,36 +1,35 @@
 from factura.models import factura
 from usuario.models import Usuario
-from django.forms.forms import Form
 import carro
 from django.contrib.messages.api import success
-from django.core import paginator
-from django.http import request
-from django.http.response import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import  *
 from .forms import *
 from django.contrib import messages
-from django.core.paginator import Paginator
 from django.contrib.auth import authenticate,login
-from django.db import connection
-import cx_Oracle
 from django.views.decorators.csrf import csrf_exempt
 from .services import *
 from carro.context_processor import *
-import json
 from usuario.forms import FormularioUsuario, FormularioUsuarioCompleto,AgregadoAdminForms
 from factura.forms import FacturaForm
 from boleta.forms import BoletaForm
 from boleta.models import boleta
 from proveedor.models import proveedor
 from proveedor.forms import AgregarProveedorForms
+import time
 
 # Create your views here.
 #Home de la pagina
 def home(request):
     productos = producto.objects.all() 
+    time.sleep(0.2)
+    try:
+        cargo = request.user.cargo
+    except:
+        cargo = 'Administrador'
     data = {
         'producto': productos,
+        'cargo':cargo,
     }
     return render(request, 'core/home.html', data)
 #formulario de contacto
@@ -70,16 +69,7 @@ def listar_productos(request):
         'producto':producto.objects.all(),
     }
     return render(request, 'core/producto/listar.html',data)
-#Procedimiento listar productos''''
-'''def lista_prodcuto():
-    django_cursor = connection.cursor()
-    cursor = django_cursor.connection.cursor()
-    out_cur = django_cursor.connection.cursor()
-    cursor.callproc('core_productos_listar', [out_cur])
-    lista = []
-    for fila in out_cur:
-        lista.append(fila)
-    return lista'''
+
 #Procedimiento para modificar producto
 def modificar_producto(request, id):
     product = get_object_or_404(producto, id=id)
@@ -113,6 +103,7 @@ def register(request):
             formulario.save()
             user = authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password1"])
             login(request, user)
+            print(user)
             messages.success(request, "Registro exitoso")
             return redirect(to="home")
         data['from'] = formulario
@@ -122,7 +113,7 @@ def register(request):
 #Funcion listar familias
 def listar_familias(request):
     data = {
-        'familia':listar_familia()
+        'familia':familia.objects.all()
     }
     return render(request, 'core/familia/listar.html', data)
 #funcion de almacenado de familias
@@ -140,23 +131,7 @@ def nueva_familia(request):
             messages.warning(request, "ERROR: La Familia no fue registrada")
 
     return render(request, 'core/familia/agregar.html', data)
-#Procedimiento para llamar a las familias
-def listar_familia():
-    django_cursor = connection.cursor()
-    cursor = django_cursor.connection.cursor()
-    out_cur = django_cursor.connection.cursor()
-    cursor.callproc('core_familia_listar', [out_cur])
-    lista = []
-    for fila in out_cur:
-        lista.append(fila)
-    return lista
-#Procedimiento para guardar familias
-def agregar_familia(nombre):
-    django_cursor = connection.cursor()
-    cursor = django_cursor.connection.cursor()
-    salida = cursor.var(cx_Oracle.NUMBER)
-    cursor.callproc('core_familia_agregar',[nombre,salida])
-    return salida.getvalue()
+
 #Procedimiento para eliminar familia    
 def eliminar_familia(request, id ):
     fam = get_object_or_404(familia, id=id)

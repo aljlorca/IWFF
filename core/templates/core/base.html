@@ -46,17 +46,17 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'contacto' %}">Contáctanos</a>
         </li>
-        {% if user.cargo.id == 3 %}
+        {% if user.cargo.nombre == 'Empleado' %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'empleado' %}">Área Empleados</a>
         </li>
         {% endif %}
-        {% if user.cargo.id == 4 %}
+        {% if user.cargo.nombre == 'Proveedor' %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'provedor' %}">Área Proveedores</a>
         </li>
         {% endif %}
-        {% if user.cargo.id == 2 %}
+        {% if user.cargo.nombre == 'Administrador' %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'administrador' %}">Área Administración</a>
         </li>

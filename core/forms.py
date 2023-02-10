@@ -32,13 +32,6 @@ class AgregarFamiliaForms(forms.ModelForm):
         model = familia
         fields = '__all__'
 
-
-
-
-
-
-
-
 class AgregarOrdenForms(forms.ModelForm):
     
     class Meta:
