@@ -14,7 +14,6 @@ class familia(models.Model):
 
 
 class producto(models.Model):
-    id = models.CharField(max_length=17, primary_key=True)
     nombre = models.CharField(max_length=30)
     descripcion = models.TextField(max_length=300)
     precio = models.IntegerField() 

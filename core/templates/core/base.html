@@ -68,6 +68,10 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'usuario' user.id %}">Usuario: {{ user.cargo |title }}</a>
         </li>
+        <a class="nav-link d-flex align-items-center" href="{% url 'cart' %}">
+          <img id="cart-icon" style="width:20px;" src="{% static 'images/cart.png' %}" alt="carrito" />
+          <p id="cart-total" class="float-right">{{importe_cant_carro}}</p>
+        </a>  
         {% else %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'login' %}">Iniciar Sesion</a>
@@ -80,10 +84,6 @@
           
         </li>
       </ul>
-      <a class="nav-link d-flex align-items-center" href="{% url 'cart' %}">
-        <img id="cart-icon" style="width:20px;" src="{% static 'images/cart.png' %}" alt="carrito" />
-        <p id="cart-total" class="float-right">{{importe_cant_carro}}</p>
-      </a>
 
     </div>
   </nav>
