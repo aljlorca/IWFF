@@ -16,13 +16,11 @@ from boleta.forms import BoletaForm
 from boleta.models import boleta
 from proveedor.models import proveedor
 from proveedor.forms import AgregarProveedorForms
-import time
-
+import os
 # Create your views here.
 #Home de la pagina
 def home(request):
     productos = producto.objects.all() 
-    time.sleep(0.2)
     try:
         cargo = request.user.cargo
     except:
@@ -69,7 +67,6 @@ def listar_productos(request):
         'producto':producto.objects.all(),
     }
     return render(request, 'core/producto/listar.html',data)
-
 #Procedimiento para modificar producto
 def modificar_producto(request, id):
     product = get_object_or_404(producto, id=id)
@@ -89,6 +86,7 @@ def modificar_producto(request, id):
 #Procedimiento para eliminar producto
 def eliminar_producto(request, id ):
     prod = get_object_or_404(producto, id=id)
+    os.remove(os.getcwd()+'\\media\\'+str(prod.imagen))
     prod.delete()
     messages,success(request, "Producto eliminado correctamente")
     return redirect(to="listar_producto")
@@ -108,7 +106,6 @@ def register(request):
             return redirect(to="home")
         data['from'] = formulario
     return render(request, 'registration/register.html', data)
-
 #Familias
 #Funcion listar familias
 def listar_familias(request):
@@ -131,7 +128,6 @@ def nueva_familia(request):
             messages.warning(request, "ERROR: La Familia no fue registrada")
 
     return render(request, 'core/familia/agregar.html', data)
-
 #Procedimiento para eliminar familia    
 def eliminar_familia(request, id ):
     fam = get_object_or_404(familia, id=id)
@@ -154,8 +150,6 @@ def modificar_familia(request, id):
             data["form"] = formulario
             
     return render(request, 'core/familia/modificar.html', data)
-
-
 #Proveedores 
 #Funcion de listado de proveedores
 def listar_proveedor (request):
@@ -201,18 +195,14 @@ def modificar_proveedor(request, id):
             data["form"] = formulario
             
     return render(request, 'core/proveedor/modificar.html', data)
-
 #TBK
-
 @csrf_exempt
 def statusTrx(request):
     data = {
         'resultado': get_statusTBK(request),
     }
     return render(request, 'core/tbk/statusTbk.html',data)
-
 #Carrito
-
 @csrf_exempt
 def cart(request):
     product = producto.objects.all()
@@ -222,7 +212,6 @@ def cart(request):
         'resultado': get_initTrxTBK(monto),
     }
     return render(request, 'core/carro/cart.html', data)    
-
 #Factura
 def nueva_factura(request):
     data = {
@@ -237,14 +226,12 @@ def nueva_factura(request):
             data["form"] = formulario
             messages.warning(request, "ERROR: la factura no fue registrada")
     return render(request, 'core/factura/agregar.html',data)
-
 def listar_factura(request):
     factur = factura.objects.all()
     data = {
         'factura':factur
     }
     return render(request, 'core/factura/listar.html',data)
-
 def modificar_factura(request,id):
     fact = get_object_or_404(factura, id=id)
     data = {
@@ -260,15 +247,12 @@ def modificar_factura(request,id):
             data["form"] = formulario
             
     return render(request, 'core/factura/modificar.html', data)
-
 def eliminar_factura(request,id):
     fact = get_object_or_404(factura, id=id)
     fact.delete()
     messages,success(request, "Factura eliminada correctamente")
     return redirect(to="listar_factura")
-
 #Usuario
-
 def usuario(request,id):
     persona = get_object_or_404(Usuario, id=id)
     data = {
@@ -284,7 +268,6 @@ def usuario(request,id):
             messages.warning(request, "ERROR: Los datos no fueron actualizados")
 
     return render(request,'core/persona/modificar.html',data)
-
 def nuevo_usuario(request):
     data = {
         'form':AgregadoAdminForms(),
@@ -297,8 +280,7 @@ def nuevo_usuario(request):
         else:
             data["form"] = formulario
             messages.warning(request, "ERROR: el usuario no fue registrado")
-    return render(request, 'core/persona/agregar.html',data)
-    
+    return render(request, 'core/persona/agregar.html',data)  
 def modificar_usuario(request,id):
     persona = get_object_or_404(Usuario, id=id)
     data = {
@@ -313,22 +295,18 @@ def modificar_usuario(request,id):
             data["form"] = formulario
             messages.warning(request, "ERROR: Los datos no fueron actualizados")
     return render(request, 'core/persona/modificar.html',data)
-
 def listar_usuario(request):
     persona = Usuario.objects.all()
     data = {
         'usuario':persona,
     }
     return render(request, 'core/persona/listar.html',data)
-
 def eliminar_usuario(request,id):
     usuari = get_object_or_404(Usuario, id=id)
     usuari.delete()
     messages,success(request, "Usuario eliminadao correctamente")
     return redirect(to="listar_usuario")
-
 #Boleta
-
 def nueva_boleta(request):
     data = {
         'form':BoletaForm(),
@@ -342,14 +320,12 @@ def nueva_boleta(request):
             data["form"] = formulario
             messages.warning(request, "ERROR: la boleta no fue registrada")
     return render(request, 'core/boleta/agregar.html',data)
-
 def listar_boleta(request):
     bolet = boleta.objects.all()
     data = {
         'boleta':bolet
     }
     return render(request, 'core/boleta/listar.html',data)
-
 def modificar_boleta(request,id):
     fact = get_object_or_404(boleta, id=id)
     data = {
@@ -365,13 +341,11 @@ def modificar_boleta(request,id):
             data["form"] = formulario
             
     return render(request, 'core/boleta/modificar.html', data)
-
 def eliminar_boleta(request,id):
     fact = get_object_or_404(boleta, id=id)
     fact.delete()
     messages,success(request, "Boleta eliminada correctamente")
     return redirect(to="listar_boleta")
-
 #Orden Compra
 def nueva_orden(request):
     data = {
@@ -386,14 +360,12 @@ def nueva_orden(request):
             data["form"] = formulario
             messages.warning(request, "ERROR: la Orden no fue registrada")
     return render(request, 'core/ordencompra/agregar.html',data)
-
 def listar_orden(request):
     orden = ordencompra.objects.all()
     data = {
         'orden':orden
     }
     return render(request,'core/ordencompra/listar.html',data)
-
 def modificar_orden(request,id):
     orden = get_object_or_404(ordencompra, id=id)
     data = {
@@ -409,12 +381,10 @@ def modificar_orden(request,id):
             data["form"] = formulario
             
     return render(request, 'core/ordencompra/modificar.html', data)
-
 def eliminar_orden(request,id):
     orden = get_object_or_404(ordencompra,id=id)
     orden.delete()
     return redirect(to='listar_orden')
-
 #Modulos 
 #Modulo proveedor
 def provedor(request):
