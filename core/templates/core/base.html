@@ -32,17 +32,9 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'home' %}">Inicio</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Categorias
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            {% for f in familia %}
-            <a class="dropdown-item" href="#">{{ f.1 }}</a>
-            {% endfor %}
-          </div>
-        </li>
+        {% block nav %}
+
+        {% endblock %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'contacto' %}">Contáctanos</a>
         </li>

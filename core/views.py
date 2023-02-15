@@ -20,7 +20,8 @@ import os
 # Create your views here.
 #Home de la pagina
 def home(request):
-    productos = producto.objects.all() 
+    productos = producto.objects.all()
+    familias = familia.objects.all()
     try:
         cargo = request.user.cargo
     except:
@@ -28,6 +29,7 @@ def home(request):
     data = {
         'producto': productos,
         'cargo':cargo,
+        'familia':familias,
     }
     return render(request, 'core/home.html', data)
 #formulario de contacto
@@ -44,7 +46,6 @@ def contacto(request):
             data["form"] = formulario
     return render(request, 'core/Contacto.html',data)
 #Productos
-#Procedimiento para agregar producto
 def agregar_producto(request):
 
     data = {
@@ -60,14 +61,12 @@ def agregar_producto(request):
             messages.warning(request, "ERROR: El producto no fue registrado")
 
     return render(request, 'core/producto/agregar.html', data)
-#Funcion listar prodcutos
 def listar_productos(request):
     data = {
         'familias':familia.objects.all(),
         'producto':producto.objects.all(),
     }
     return render(request, 'core/producto/listar.html',data)
-#Procedimiento para modificar producto
 def modificar_producto(request, id):
     product = get_object_or_404(producto, id=id)
     data = {
@@ -83,13 +82,16 @@ def modificar_producto(request, id):
             data["form"] = formulario
             messages.warning(request, "ERROR: No se pudo modificar el producto")
     return render(request, 'core/producto/modificar.html', data)
-#Procedimiento para eliminar producto
 def eliminar_producto(request, id ):
     prod = get_object_or_404(producto, id=id)
     os.remove(os.getcwd()+'\\media\\'+str(prod.imagen))
     prod.delete()
     messages,success(request, "Producto eliminado correctamente")
     return redirect(to="listar_producto")
+def nombre_familia(request,familia_id):
+    productos = producto.objects.filter(familia_id=familia_id)
+    data = { 'producto':productos,'nombre':nombre_familia}
+    return render(request,'core/producto/familias.html',data )
 #Registro de clientes
 def register(request):
     data = {
@@ -107,13 +109,11 @@ def register(request):
         data['from'] = formulario
     return render(request, 'registration/register.html', data)
 #Familias
-#Funcion listar familias
 def listar_familias(request):
     data = {
         'familia':familia.objects.all()
     }
     return render(request, 'core/familia/listar.html', data)
-#funcion de almacenado de familias
 def nueva_familia(request):
     data = {
         'form': AgregarFamiliaForms()  
@@ -128,13 +128,11 @@ def nueva_familia(request):
             messages.warning(request, "ERROR: La Familia no fue registrada")
 
     return render(request, 'core/familia/agregar.html', data)
-#Procedimiento para eliminar familia    
 def eliminar_familia(request, id ):
     fam = get_object_or_404(familia, id=id)
     fam.delete()
     messages,success(request, "Familia eliminada correctamente")
     return redirect(to="listar_familias")
-#Procedimiento para modificar familia
 def modificar_familia(request, id):
     famil = get_object_or_404(familia, id=id)
     data = {
@@ -151,14 +149,12 @@ def modificar_familia(request, id):
             
     return render(request, 'core/familia/modificar.html', data)
 #Proveedores 
-#Funcion de listado de proveedores
 def listar_proveedor (request):
     prov = proveedor.objects.all()
     data = {
         'proveedor':prov
     }
     return render(request,'core/proveedor/listar.html',data)
-#Funcion de almacenado de proveedor
 def nuevo_proveedor(request):
     data = {
         'form': AgregarProveedorForms()  
@@ -173,13 +169,11 @@ def nuevo_proveedor(request):
             messages.warning(request, "ERROR: El proveedor no fue registrado")
 
     return render(request, 'core/proveedor/agregar.html', data)
-#Procedimiento para eliminar proveedor
 def eliminar_proveedor(request, id ):
     prov = get_object_or_404(proveedor, id=id)
     prov.delete()
     messages,success(request, "Proveedor eliminado correctamente")
     return redirect(to="listar_proveedor")
-#Modificar Proveedor 
 def modificar_proveedor(request, id):
     prov = get_object_or_404(proveedor, id=id)
     data = {

@@ -1,6 +1,20 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% load humanize %}
+
+{% block nav %}
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+    aria-haspopup="true" aria-expanded="false">
+    Categorias
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    {% for f in familia %}
+    <a class="dropdown-item" href="{% url 'nombre_familia' f.id %}">{{ f.nombre }}</a>
+    {% endfor %}
+  </div>
+</li>
+{% endblock %}
 {% block contenido %}
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">

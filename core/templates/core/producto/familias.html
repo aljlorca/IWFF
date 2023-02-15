@@ -1,0 +1,49 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block nav %}
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+    aria-haspopup="true" aria-expanded="false">
+    Categorias
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    {% for f in familia %}
+    <a class="dropdown-item" href="{% url 'nombre_familia' f.id %}">{{ f.nombre }}</a>
+    {% endfor %}
+  </div>
+</li>
+{% endblock %}
+{% block contenido %}
+  <hr>
+    <h2 class="text-center">Productos</h2>
+    <hr>
+    <div class="container">
+      <div class="row text-center">
+        {% for p in producto %}
+          <div class="col-md-4 pb-1 pb-md-0">
+            <div class="card" style="background-color: #DADADA;">
+              {% if p.imagen %}
+              <div>
+                <img src="{{ p.imagen.url }}" class="card-img-top" alt="imagen">
+              </div>
+              {% else %}
+              <div>
+                <img src="{% static '/images/default.jpg' %}" class="card-img-top" alt="imagen">
+              </div>
+              {% endif %}
+              <div class="card-body">
+                <h5 class="card-title">{{ p.nombre }}</h5>
+                <p class="card-text">{{ p.descripcion }}</p>
+                <p class="card-text">${{ p.precio | intcomma}}</p>
+                <a href="{% url 'carro:agregar_home' p.id %}" class="btn btn-primary">Añadir al carrito</a>
+              </div>
+            </div>        
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    
+    
+{% endblock %}

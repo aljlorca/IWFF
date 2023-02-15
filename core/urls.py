@@ -14,6 +14,7 @@ urlpatterns = [
     path('listarproducto/', listar_productos, name="listar_producto"),
     path('modificarproducto/<id>/', modificar_producto, name="modificar_producto"),
     path('eliminarproducto/<id>/', eliminar_producto, name="eliminar_producto"),
+    path('categoria/<familia_id>',nombre_familia,name='nombre_familia'),
     #registro
     path('register/', register, name="register"),
     #familia
